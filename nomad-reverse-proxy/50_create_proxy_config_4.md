@@ -19,7 +19,7 @@ equal to the address of the Nomad API.
 
 By default NGINX will not fulfill the handshake or the origin verification. This
 results in exec sessions immediately terminating. You can experience this in the
-Web UI by going to the [sample job], clicking the Exec button, choosing the
+Web UI by navigating to the [sample job], clicking the Exec button, selecting the
 task, and attempting to run the command `/bin/sh`.
 
 [![Error in the UI when running /bin/sh. The connection has closed.][img-cannot-remote-exec]][img-cannot-remote-exec]
@@ -36,7 +36,7 @@ NGINX configuration file.
       # a WebSockets connection.
       proxy_set_header Upgrade $http_upgrade;
       proxy_set_header Connection "upgrade";
-      
+
       # The default Origin header will be the proxy address, which
       # will be rejected by Nomad. It must be rewritten to be the
       # host address instead.
@@ -57,7 +57,6 @@ This can be done by specifying an upstream in NGINX and using it as the proxy
 pass. Add the following after the server block in the existing NGINX
 configuration file.
 
-
 <pre class="file" data-filename="nginx.conf" data-target="append">
 # Since WebSockets are stateful connections but Nomad has multiple
 # server nodes, an upstream with ip_hash declared is required to ensure
@@ -68,7 +67,7 @@ upstream nomad-ws {
 }
 </pre>
 
-Traffic must also pass through the upstream. To do this, change the `proxy_pass`
+Traffic must also pass through the upstream. To configure this, change the `proxy_pass`
 in the NGINX configuration file.
 
 <pre class="file" data-filename="nginx.conf" data-target="insert" data-marker="    location / {">
@@ -81,4 +80,4 @@ observable effect.
 
 [sample job]: https://[[HOST_SUBDOMAIN]]-8000-[[KATACODA_HOST]].environments.katacoda.com/jobs/fs-example
 [exec]: https://www.hashicorp.com/blog/hashicorp-nomad-remote-exec-web-ui
-[img-cannot-remote-exec]: assets/img-cannot-remote-exec.png
+[img-cannot-remote-exec]: ./assets/img-cannot-remote-exec.png

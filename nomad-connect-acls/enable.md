@@ -21,7 +21,7 @@
 Open the `consul_config.hcl`{{open}} file and add this stanza anywhere in the
 top level.
 
-<pre class="file" data-target="clipboard">
+<pre class="file" data-filename="consul_config.hcl"  data-target="append">
 acl {
   enabled                  = true
   default_policy           = "deny"
@@ -31,8 +31,8 @@ acl {
 
 ### Restart Consul
 
-Run `systemctl restart consul`{{execute}} to restart Consul to load
-these changes.
+Run `systemctl restart consul`{{execute}} to restart Consul and load
+the new configuration.
 
 ### Bootstrap Consul ACLs
 
@@ -60,5 +60,5 @@ Policies:
    00000000-0000-0000-0000-000000000001 - global-management
 ```
 
-Next, we will create a Consul agent ACL policy and a token for use on the Consul
+Next, you will create a Consul agent ACL policy and a token for use on the Consul
 agent.

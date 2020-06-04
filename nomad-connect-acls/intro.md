@@ -1,24 +1,23 @@
-In this scenario, we will experiment with deploying a Nomad job that uses Consul
-Connect in a cluster with ACLs enabled.
+# Nomad, Consul Connect, and Consul ACLs
 
-We will do that by:
+In this hands-on lab you will deploy a Nomad job that uses Consul
+service mesh in a cluster with ACLs enabled.
 
-- Enabling and bootstrapping Consul ACLs
+Specifically you will:
 
-- Creating Consul agent policy and token
+- Enable and bootstrap Consul ACLs
 
-- Install Consul agent token
+- Create a Consul agent policy and token
 
-- Creating Nomad server policy and token
+- Install a Consul agent token
 
-- Configure Nomad with Consul token
+- Create a Nomad server policy and token
 
-- Running a Connect-enabled job
-  - Creating a Connect intention
-  - Running the job
-  - Verifying the application is running
+- Configure Nomad with a Consul token
 
-- Requiring Consul authentication to run jobs
+- Run a Connect-enabled job
 
-- Running a Connect-enabled job with a token
+- Configure Consul authentication to run jobs
+
+- Run a service mesh enabled job with a token
 

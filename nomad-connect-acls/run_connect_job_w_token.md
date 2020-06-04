@@ -19,13 +19,13 @@ Error submitting job: Unexpected response code: 500 (operator token denied: miss
 ```
 
 Nomad will not allow you to submit a job to the cluster without providing a
-Consul token that has write access to the Consul service that the job defines.
+Consul token that has `write` access to the Consul service that the job defines.
 
 You can supply the token in a few ways:
 
 - `CONSUL_HTTP_TOKEN` environment variable
-- `-consul-token` flag on the command line
-- `-X-Consul-Token` header on API calls
+- `-consul-token` flag from the command line
+- `-X-Consul-Token` header in API calls
 
 Reload your management token into the CONSUL_HTTP_TOKEN environment variable.
 

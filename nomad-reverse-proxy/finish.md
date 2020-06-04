@@ -1,11 +1,11 @@
 ## Next steps
 
 In this guide, you set up a reverse NIGNX proxy configured for the Nomad UI.
-You also explored common configuration properties necessary to allow the Nomad
-UI to work properly through a proxy—connection timeouts, proxy buffering,
+You also explored common configuration settings necessary to allow the Nomad
+UI to work properly through proxy—connection timeouts, proxy buffering,
 WebSocket connections, and Origin header rewriting.
 
-You can use these building blocks to configure your preferred proxy server
+You can use these examples to configure your preferred proxy server
 software to work with the Nomad UI. For further information about the NGINX
 specific configuration highlighted in this guide, consult:
 

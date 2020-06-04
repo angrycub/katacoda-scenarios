@@ -1,18 +1,18 @@
-defrWhen possible the Web UI will use a streaming HTTP request to stream logs on the
-task logs page. NGINX by default will buffer proxy responses in an attempt to
+When possible, the Web UI will use a streaming HTTP request to stream logs on the
+task logs page. NGINX will buffer proxy responses by default in an attempt to
 free up connections to the backend server being proxied as soon as possible.
 
 Proxy buffering causes logs events to not stream because they will be
 temporarily captured within NGINX's proxy buffer until either the connection is
-closed or the proxy buffer size is hit and the data is finally flushed to the
-client.
+closed or the proxy buffer is filled and the data is finally flushed
+to the client.
 
 Older browsers may not support this technology, in which case logs are streamed
 using a simple polling mechanism.
 
 To observe this issue, visit the task logs page of your sample job by first
-visiting the [sample job], then clicking into the most recent allocation, then
-clicking into the `fs-example` task, then clicking the logs tab.
+visiting the [sample job], then clicking the most recent allocation, then
+clicking the `fs-example` task, then clicking the logs tab.
 
 Logs will not load and eventually the following error will appear in the UI.
 
@@ -31,9 +31,11 @@ the Nomad configuration file used in this guide specifically advertises an
 address that can't be reached, the UI automatically falls back to requesting
 logs through the proxy.
 
-To allow log streaming through NGINX, the NGINX configuration needs to be
-updated to disable proxy buffering. Add the following to the top of the
-`location` block of the existing NGINX configuration file.
+The NGINX configuration needs to be updated to disable proxy buffering, and
+allow log streaming.
+
+Add the following to the top of the `location` block of the existing NGINX
+configuration file.
 
 <pre class="file" data-filename="nginx.conf" data-target="insert" data-marker="    location / {">
     location / {
