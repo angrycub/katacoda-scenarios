@@ -31,11 +31,11 @@ several benefits:
   distribute application traffic over many instances of the application, thus
   increasing its availability.
 
-- **TLS termination/uplift** - Since the proxy server is creates a new
+- **TLS termination/uplift** - Since the proxy server creates a new
   connection on behalf of the user, it can use a different TLS configuration for
-  the client- side connection and the server connection. This fact allows
+  the client-side connection and the server connection. This fact allows
   operators to use a reverse proxy to terminate SSL at the proxy so that
-  application traffic is in the clear. It also allows a connection to be
+  application traffic is [[REPLACE COLLOQUIALISM (in the clear)]]. It also allows a connection to be
   "uplifted" to TLS as it goes from client to proxy to server.
 
 - **application aggregation** - Many proxies provide the ability to route

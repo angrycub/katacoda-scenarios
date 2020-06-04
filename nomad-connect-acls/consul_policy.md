@@ -22,7 +22,7 @@ host01  172.17.0.25:8301  alive   server  1.7.0  2         dc1  <all>
 
 Run `touch consul-agent-policy.hcl`{{execute}} to create a blank policy file.
 
-Now, open `consul-agent-policy.hcl`{{open}} in the editor and add this content.
+Open `consul-agent-policy.hcl`{{open}} in the editor and add this content.
 
 <pre class="file" data-filename="consul-agent-policy.hcl" data-target="replace">
 node_prefix "" {
@@ -91,4 +91,4 @@ Policies:
    c1b732ff-bcc0-3c6a-3c53-d41c7e41797f - consul-agent-token
 ```
 
-In the next step, we will configure the Consul agent to use this token.
+In the next step, you will configure the Consul agent to use this token.

@@ -1,13 +1,14 @@
-As mentioned earlier, the overarching goal is to configure a proxy from Nomad UI
+As mentioned earlier, the goal is to configure a proxy from external Nomad UI
 users to the Nomad UI running on the Nomad cluster. To do that, you will
-configure a NGINX instance as your reverse proxy.
+configure an NGINX instance as your reverse proxy.
 
 Create a basic NGINX configuration file to reverse proxy the Web UI. It is
 important to name the NGINX configuration file `nginx.conf` otherwise the file
 will not bind correctly.
 
-Run `touch nginx.conf`{{execute}}.  Open the `nginx.conf`{{open}} file in the
-text editor
+Run `touch nginx.conf`{{execute}}.
+
+Open the `nginx.conf`{{open}} file in the text editor.
 
 <pre class="file" data-filename="nginx.conf" data-target="replace">
 # nginx.conf
@@ -34,20 +35,20 @@ http {
 }
 </pre>
 
-This basic NGINX configuration does a few things. 
+This basic NGINX configuration does the following:
 
-- Forwards all traffic received by NGINX to the Nomad port running on the host.
+- Forwards all traffic received by NGINX to the Nomad port running on the host
 
-- Adds the `X-Forwarded-For` header to collect the IP address of the requester.
+- Adds the `X-Forwarded-For` header to collect the IP address of the requester
 
-- Handles the mTLS connection to Nomad.
+- Handles the mTLS connection to Nomad
 
-    - Establishes trust of the Nomad CA certificate. 
-    - Provides a valid mTLS certificate for verification purposes.
+    - Establishes trust of the Nomad CA certificate
+    - Provides a valid mTLS certificate for verification purposes
 
 
-Start the NGINX docker container mounting in your config file and the mTLS
-certificates.
+Start the NGINX docker container. Notice the mount options handle making your
+config file and the mTLS certificates available to the container.
 
 ```
 docker run -d \

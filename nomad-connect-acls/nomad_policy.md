@@ -2,8 +2,10 @@
 .lang-screenshot { -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
 </style>
 
-Now to create the Nomad agent policy file, run `touch nomad-server-policy.hcl`{{execute}}
-to create a blank file. Open `nomad-server-policy.hcl`{{open}} in the editor and
+Run `touch nomad-server-policy.hcl`{{execute}}
+to create an empty Nomad agent policy file.
+
+Open `nomad-server-policy.hcl`{{open}} in the editor and
 add this content.
 
 <pre class="file" data-filename="nomad-server-policy.hcl" data-target="replace">
@@ -73,4 +75,4 @@ Policies:
    fed881c2-a9c1-b89d-3941-056fca77eb17 - nomad-server-token
 ```
 
-In the next step, we will configure Nomad to use this token.
+In the next step, you will configure Nomad to use this token.

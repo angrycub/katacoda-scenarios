@@ -1,6 +1,6 @@
 {
-  "title": "Nomad, Consul Connect, and Consul ACLs.",
-  "description": "Learn how to run Nomad jobs that leverage Consul Connect for ACL-enabled Consul clusters.",
+  "title": "Nomad, Consul service mesh, and Consul ACLs.",
+  "description": "Learn how to run Nomad jobs that leverage Consul service mesh for ACL-enabled Consul clusters.",
   "difficulty": "Intermediate",
   "time": "20-40 minutes",
   "icon": "fa-nomad",
@@ -14,20 +14,20 @@
         "verify": "provision.verify.sh"
       },
       {
-        "title": "Enabling and bootstrapping Consul ACLs",
+        "title": "Enable and bootstrap Consul ACLs",
         "text": "enable.md",
         "verify": "enable.md.verify.sh"
       },
       {
-        "title": "Creating Consul agent policy and token",
+        "title": "Create a Consul agent policy and token",
         "text": "consul_policy.md"
       },
       {
-        "title": "Install Consul agent token",
+        "title": "Install a Consul agent token",
         "text": "consul_agent_token.md"
       },
       {
-        "title": "Creating Nomad server policy and token",
+        "title": "Create a Nomad server policy and token",
         "text": "nomad_policy.md"
       },
       {
@@ -35,15 +35,15 @@
         "text": "nomad_config.md"
       },
       {
-        "title": "Running a Connect-enabled job",
+        "title": "Run a service mesh enabled job",
         "text": "run_connect_job.md"
       },
       {
-        "title": "Requiring Consul authentication to run jobs",
+        "title": "Configure Consul authentication to run jobs",
         "text": "disallow_unauthenticated.md"
       },
       {
-        "title": "Running a Connect-enabled job with a token",
+        "title": "Run a service mesh enabled job with a token",
         "text": "run_connect_job_w_token.md"
       }
     ],

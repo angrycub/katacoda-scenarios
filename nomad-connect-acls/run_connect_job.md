@@ -1,9 +1,12 @@
 <style type="text/css">
-.lang-screenshot { -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
+  .lang-screenshot { -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
+  .alert { position: relative; padding: .75rem 1.25rem; margin-bottom: 1rem; border: 1px solid transparent; border-radius: .25rem; }
+  .alert-info    { color: #0c5460; background-color: #d1ecf1; border-color: #bee5eb; }
 </style>
 
-Create a blank job file by running `touch countdash.nomad`{{execute}}. Open
-`countdash.nomad`{{open}} in the editor and copy-and-paste this job
+Run `touch countdash.nomad`{{execute}} to create a blank job file.
+
+Open `countdash.nomad`{{open}} in the editor and copy-and-paste this job
 specification into the file.
 
 <pre class="file" data-filename="countdash.nomad" data-target="replace">job "countdash" {
@@ -70,8 +73,8 @@ specification into the file.
 
 ### Create the intention
 
-Consul Connect starts in "default-deny" mode in clusters that have ACLs enabled.
-You will need to create an intention to allow traffic from the count-dashboard
+Consul service mesh starts in "default-deny" mode in datacenters that have ACLs enabled.
+You must create an intention to allow traffic from the count-dashboard
 service to the count-api service.
 
 Run `consul intention create count-dashboard count-api`{{execute}}
@@ -85,7 +88,7 @@ Created: count-dashboard => count-api (allow)
 
 ### Run the job
 
-Run the job by calling `nomad run countdash.nomad`{{execute}}.
+Run the job by executing `nomad run countdash.nomad`{{execute}}.
 
 **Example Output**
 
@@ -100,8 +103,16 @@ $ nomad run countdash.nomad
 ==> Evaluation "3e7ebb57" finished with status "complete"
 ```
 
-Open the Countdash interface by clicking the "Countdash UI" tab above the 
-terminal.
+Open the Countdash interface by clicking the "Countdash UI" tab above the
+terminal. The Countdash interface may appear "Disconnected" on initial load.
+Waiting a few seconds or refreshing your browser will update the status to
+"Connected".
+
+<div class="alert-info alert">
+If the Countdash UI displays "Counting Service is Unreachaable",you should
+go back and verify your configuration, and ensure that you have executed all
+the guide commands—specifically the **consul intention create...** command.
+</div>
 
 Once you are done, run `nomad stop countdash`{{execute}} to prepare for the next
 step.
