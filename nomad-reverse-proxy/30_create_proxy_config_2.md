@@ -9,8 +9,8 @@ proxy closes the connection early because of a connection timeout, it could
 prevent the Web UI from continuing to live-reload data.
 
 The Nomad Web UI live-reloads all data to make sure views remain fresh
-as the Nomad server's state changes. To do this, the UI executes [blocking queries]
-against the Nomad API. Blocking queries are an implementation of long-polling which
+as the Nomad server's state changes. To do this, the UI performs [blocking queries]
+on the Nomad API. Blocking queries are an implementation of long-polling which
 works by keeping HTTP connections open until server-side state has changed. This
 is advantageous over traditional polling which results in more requests that
 often return no new information. It is also faster since a connection will close

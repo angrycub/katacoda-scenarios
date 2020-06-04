@@ -4,7 +4,7 @@ free up connections to the backend server being proxied as soon as possible.
 
 Proxy buffering causes logs events to not stream because they will be
 temporarily captured within NGINX's proxy buffer until either the connection is
-closed or the proxy buffer size limit is reached and the data is finally flushed
+closed or the proxy buffer is filled and the data is finally flushed
 to the client.
 
 Older browsers may not support this technology, in which case logs are streamed

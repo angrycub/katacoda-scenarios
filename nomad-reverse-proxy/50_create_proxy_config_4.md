@@ -25,9 +25,9 @@ task, and attempting to run the command `/bin/sh`.
 [![Error in the UI when running /bin/sh. The connection has closed.][img-cannot-remote-exec]][img-cannot-remote-exec]
 
 The fulfill the handshake NGINX will need to forward the `Connection` and
-`Upgrade` headers. NGINX will have to override the existing `Origin` header
-to match the host address to meet the origin verification required by the
-Nomad API. Add the following to the top of the`location` block of the existing
+`Upgrade` headers. To meet the origin verification required by the Nomad API,
+NGINX will have to override the existing `Origin` header to match the host
+address. Add the following to the top of the`location` block of the existing
 NGINX configuration file.
 
 <pre class="file" data-filename="nginx.conf" data-target="insert" data-marker="    location / {">
