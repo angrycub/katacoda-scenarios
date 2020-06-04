@@ -1,4 +1,4 @@
-When possible the Web UI will use a streaming HTTP request to stream logs on the
+defrWhen possible the Web UI will use a streaming HTTP request to stream logs on the
 task logs page. NGINX by default will buffer proxy responses in an attempt to
 free up connections to the backend server being proxied as soon as possible.
 
@@ -16,7 +16,7 @@ clicking into the `fs-example` task, then clicking the logs tab.
 
 Logs will not load and eventually the following error will appear in the UI.
 
-[![Error in the UI. Cannot fetch logs. The logs for this task are inaccessible][img-cannot-fetch-logs]][img-cannot-fetch-logs]
+[![Error in the UI. Cannot fetch logs. The logs for this task are inaccessible][./assets/img-cannot-fetch-logs]][./assets/img-cannot-fetch-logs]
 
 There will also be this additional error in the browser developer tools console.
 

@@ -57,18 +57,6 @@ This can be done by specifying an upstream in NGINX and using it as the proxy
 pass. Add the following after the server block in the existing NGINX
 configuration file.
 
-<pre class="file" data-filename="nginx.conf" data-target="insert" data-marker="    location / {">
-    location / {
-      # The Upgrade and Connection headers are used to establish
-      # a WebSockets connection.
-      proxy_set_header Upgrade $http_upgrade;
-      proxy_set_header Connection "upgrade";
-      
-      # The default Origin header will be the proxy address, which
-      # will be rejected by Nomad. It must be rewritten to be the
-      # host address instead.
-      proxy_set_header Origin "${scheme}://${proxy_host}";
-</pre>
 
 <pre class="file" data-filename="nginx.conf" data-target="append">
 # Since WebSockets are stateful connections but Nomad has multiple
@@ -85,7 +73,7 @@ in the NGINX configuration file.
 
 <pre class="file" data-filename="nginx.conf" data-target="insert" data-marker="    location / {">
     location / {
-      proxy_pass https://nomad-ws
+      proxy_pass https://nomad-ws;
 </pre>
 
 Since this development environment only has one node, this change has no
