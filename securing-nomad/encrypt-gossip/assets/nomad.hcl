@@ -1,17 +1,17 @@
-  data_dir  = "/opt/nomad/data"
-  log_level = "DEBUG"
+data_dir  = "/opt/nomad/data"
+log_level = "DEBUG"
 
-  client {
+client {
+  enabled = true
+}
+
+plugin "raw_exec" {
+  config {
     enabled = true
   }
+}
 
-  plugin "raw_exec" {
-    config {
-      enabled = true
-    }
-  }
-
-  server {
-    enabled          = true
-    bootstrap_expect = 1
-  }
+server {
+  enabled          = true
+  bootstrap_expect = 1
+}

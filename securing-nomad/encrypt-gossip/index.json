@@ -40,10 +40,11 @@
       "text": "finish.md"
     },
     "assets": {
-      "client": [
+      "host01": [
         {
           "file": "provision.sh",
-          "target": "/tmp"
+          "target": "/tmp",
+          "chmod": "+x"
         },
         {
           "file": "nomad.hcl",
@@ -51,15 +52,32 @@
         },
         {
           "file": "nomad.sh",
-          "target": "/etc/init.d/"
+          "target": "/etc/init.d/",
+          "chmod": "+x"
+        }
+      ],
+      "host02": [
+        {
+          "file": "provision.sh",
+          "target": "/tmp",
+          "chmod": "+x"
+        },
+        {
+          "file": "nomad.hcl",
+          "target": "/etc/nomad.d/"
+        },
+        {
+          "file": "nomad.sh",
+          "target": "/etc/init.d/",
+          "chmod": "+x"
         }
       ]
     }
   },
   "environment": {
-    "uilayout": "editor-terminal"
+    "uilayout": "terminal-terminal"
   },
   "backend": {
-    "imageid": "bash"
+    "imageid": "centos-cluster2"
   }
 }

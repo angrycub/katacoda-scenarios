@@ -4,10 +4,10 @@ log() {
   echo $(date) - ${1}
 }
 
-install_apt_deps {
+install_apt_deps() {
   log "Installing OS dependencies"
   apt update
-  apt install sudo unzip daemon
+  apt install sudo unzip daemon python3 python3-pip
 }
 
 install_zip() {
@@ -28,7 +28,7 @@ install_pyhcl() {
   pip install -qqq pyhcl
 }
 
-create_nomad_service {
+create_nomad_service() {
   if [ ! -f "/etc/nomad.d/nomad.hcl" ]
   then
     cp /tmp/nomad.hcl /etc/nomad.d/nomad.hcl
