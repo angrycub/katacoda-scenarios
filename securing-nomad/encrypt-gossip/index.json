@@ -8,7 +8,6 @@
       {
         "title": "Provisioning Extra Course Components",
         "text": "provision.md",
-        "courseData": "provision.courseData.sh",
         "code": "provision.code.sh",
         "verify": "provision.verify.sh"
       },
@@ -78,6 +77,6 @@
     "uilayout": "terminal"
   },
   "backend": {
-    "imageid": "centos"
+    "imageid": "ubuntu"
   }
 }
