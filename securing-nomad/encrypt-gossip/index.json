@@ -75,9 +75,9 @@
     }
   },
   "environment": {
-    "uilayout": "terminal-terminal"
+    "uilayout": "terminal"
   },
   "backend": {
-    "imageid": "centos-cluster2"
+    "imageid": "centos"
   }
 }
