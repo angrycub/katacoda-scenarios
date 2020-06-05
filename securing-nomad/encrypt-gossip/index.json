@@ -1,25 +1,36 @@
 {
-  "title": "Encrypting Nomad Gossip Traffic",
-  "description": "Nomad uses UDP-based gossip for membership and liveness; secure it using symmetric key encryption.",
+  "title": "Enable Gossip Encryption for Nomad",
+  "description": "Learn how to encrypt Nomad's gossip protocol with a symmetric key.",
   "difficulty": "Beginner",
-  "time": "10 minutes",
+  "time": "15 minutes",
   "details": {
     "steps": [
       {
-        "title": "Step 1",
+        "title": "Provisioning Extra Course Components",
+        "text": "provision.md",
+        "courseData": "provision.courseData.sh",
+        "code": "provision.code.sh",
+        "verify": "provision.verify.sh"
+      },
+      {
+        "title": "Examine gossip traffic",
+        "text": "step0.md"
+      },
+      {
+        "title": "Generate a key",
         "text": "step1.md"
       },
       {
-        "title": "Step 2",
+        "title": "Configure host 1",
         "text": "step2.md"
       },
       {
-        "title": "Step 3",
-        "text": "step3.md"
+        "title": "Configure host 2",
+        "text": "step2.md"
       },
       {
-        "title": "Step 4",
-        "text": "step4.md"
+        "title": "Verify Encryption",
+        "text": "step3.md"
       }
     ],
     "intro": {
@@ -27,12 +38,28 @@
     },
     "finish": {
       "text": "finish.md"
+    },
+    "assets": {
+      "client": [
+        {
+          "file": "provision.sh",
+          "target": "/tmp"
+        },
+        {
+          "file": "nomad.hcl",
+          "target": "/etc/nomad.d/"
+        },
+        {
+          "file": "nomad.sh",
+          "target": "/etc/init.d/"
+        }
+      ]
     }
   },
   "environment": {
-    "uilayout": "terminal-terminal"
+    "uilayout": "editor-terminal"
   },
   "backend": {
-    "imageid": "ubuntu1804"
+    "imageid": "bash"
   }
 }
