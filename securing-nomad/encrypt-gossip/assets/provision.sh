@@ -6,8 +6,8 @@ log() {
 
 install_apt_deps() {
   log "Installing OS dependencies"
-  apt update
-  apt install sudo unzip daemon python3 python3-pip
+  apt update > /dev/null
+  apt install sudo unzip daemon python3 python3-pip > /dev/null
 }
 
 install_zip() {
