@@ -3,7 +3,8 @@ Description=Named network namespace %i
 JoinsNamespaceOf=systemd-netns@%i.service
 BindsTo=systemd-netns-access@%i.service
 PartOf=%i.service
-After=syslog.target network.target systemd-netns@%i.service
+Requires=systemd-netns-bridge@nomad.service
+After=syslog.target network.target systemd-netns-bridge@nomad.service
 
 [Service]
 Type=oneshot
@@ -11,14 +12,20 @@ RemainAfterExit=true
 PrivateNetwork=true
 
 # Start process
-ExecStartPre=-/usr/bin/env ip netns delete %I
-ExecStart=/usr/bin/env ip netns add %I
-ExecStart=/usr/bin/env ip netns exec %I ip link set lo up
-ExecStart=/usr/bin/env umount /var/run/netns/%I
-ExecStart=/usr/bin/env mount --bind /proc/self/ns/net /var/run/netns/%I
+ExecStartPre=-/usr/bin/env ip netns delete %i
+ExecStart=/usr/bin/env ip netns add %i
+ExecStart=/usr/bin/env ip link add %i-veth type veth peer name br-%i-veth
+ExecStart=/usr/bin/env ip link set %i-veth netns %i
+ExecStart=/usr/bin/env ip link set br-%i-veth up
+ExecStart=/usr/bin/env ip link set br-%i-veth master br-nomad
+ExecStart=/usr/bin/env ip netns exec %i ip link set lo up
+ExecStart=/usr/bin/env ip netns exec %i ip link set %i-veth up
+
+ExecStart=/usr/bin/env umount /var/run/netns/%i
+ExecStart=/usr/bin/env mount --bind /proc/self/ns/net /var/run/netns/%i
 
 # Stop process
-ExecStop=/usr/bin/env ip netns delete %I
+ExecStop=/usr/bin/env ip netns delete %i
 
 [Install]
 WantedBy=multi-user.target

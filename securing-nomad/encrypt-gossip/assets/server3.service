@@ -1,5 +1,5 @@
 [Unit]
-Description=Nomad - Server1
+Description=Nomad - Server3
 Documentation=https://nomadproject.io/docs/
 Wants=network-online.target
 After=network-online.target
@@ -9,7 +9,7 @@ After = systemd-netns@nomad.service
 
 [Service]
 ExecReload=/bin/kill -HUP $MAINPID
-ExecStart=/usr/local/bin/nomad agent -config /root/server1.hcl
+ExecStart=/usr/local/bin/nomad agent -config /root/server3.hcl
 
 KillMode=process
 KillSignal=SIGINT
@@ -18,7 +18,7 @@ LimitNPROC=infinity
 Restart=on-failure
 RestartSec=2
 StartLimitBurst=3
-StartLimitIntervalSec=10
+#StartLimitIntervalSec=10
 TasksMax=infinity
 OOMScoreAdjust=-1000
 

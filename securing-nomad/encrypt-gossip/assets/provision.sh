@@ -1,13 +1,25 @@
 #! /bin/bash
 
 log() {
-  echo $(date) - ${1}
+  echo $(date) - ${1} | tee -a /var/log/provision.log
+}
+
+fix_journal() {
+  log "Fixing Journal"
+  if [ ! -f "/etc/machine-id" ]
+  then
+    systemd-machine-id-setup > /dev/null 2>&1
+    systemd-tmpfiles --create --prefix /var/log/journal
+    systemctl start systemd-journald.service
+  fi
 }
 
 install_apt_deps() {
   log "Installing OS dependencies"
-  apt update > /dev/null
-  apt install sudo unzip daemon python3 python3-pip > /dev/null
+  export DEBIAN_FRONTEND=noninteractive
+  apt-get -y update >> /var/log/provision.log 2>&1
+  apt-get -y install sudo unzip daemon python3 python3-pip >> /var/log/provision.log 2>&1 
+  unset DEBIAN_FRONTEND
 }
 
 install_zip() {
@@ -33,7 +45,8 @@ create_nomad_service() {
   then
     cp /tmp/nomad.hcl /etc/nomad.d/nomad.hcl
   fi
-  insserv nomad
+  cp /tmp/nomad.service /lib/systemd/system/
+  systemctl enable nomad
 }
 
 finish() {
@@ -42,6 +55,7 @@ finish() {
 }
 
 # Main stuff
+fix_journal
 install_apt_deps
 install_pyhcl
 
