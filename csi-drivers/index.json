@@ -1,0 +1,43 @@
+{
+  "title": "Using CSI drivers in Nomad",
+  "description": "Learn how to configure Nomad to use CSI plugins to configure storage for a workload.",
+  "difficulty": "intermediate",
+  "time": "20-40 minutes",
+  "icon": "fa-nomad",
+  "details": {
+    "steps": [
+      {
+        "title": "Provisioning Extra Course Components",
+        "text": "provision.md",
+        "courseData": "provision.courseData.sh",
+        "code": "provision.code.sh",
+        "verify": "provision.verify.sh"
+      },
+      {
+        "title": "Explore inside the scenario",
+        "text": "playground.md"
+      }
+    ],
+    "intro": {
+      "text": "intro.md"
+    },
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "files": [],
+  "environment": {
+    "uilayout": "editor-terminal",
+    "uimessage1": "\u001b[32mInteractive Bash Terminal.\u001b[m\r\n",
+    "showdashboard": true,
+    "dashboards": [
+      {
+        "name": "Nomad UI",
+        "port": 4646
+      }
+    ]
+  },
+  "backend": {
+    "imageid": "ubuntu"
+  }
+}
