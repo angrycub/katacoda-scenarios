@@ -3,9 +3,9 @@ Description=Nomad - Server3
 Documentation=https://nomadproject.io/docs/
 Wants=network-online.target
 After=network-online.target
-BindsTo = systemd-netns@nomad.service
-JoinsNamespaceOf = systemd-netns@nomad.service
-After = systemd-netns@nomad.service
+BindsTo=systemd-netns@server3.service
+JoinsNamespaceOf=systemd-netns@server3.service
+After=systemd-netns@server3.service
 
 [Service]
 ExecReload=/bin/kill -HUP $MAINPID

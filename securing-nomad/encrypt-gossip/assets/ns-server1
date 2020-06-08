@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+function start {
+  echo "Configuring server1 namespace"
+  echo "Done"
+}
+
+function stop {
+  echo "Removing server1 namespace configuration"
+  echo "Done"
+}
+
+case "$1" in
+   start)
+      start
+   ;;
+   stop)
+      stop
+   ;;
+   restart)
+      stop
+      start
+   ;;
+   *)
+      echo "Usage: $0 {start|stop|restart}"
+esac

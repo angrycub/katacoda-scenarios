@@ -1,20 +1,16 @@
 [Unit]
-Description=Nomad
+Description=Nomad - Server2
 Documentation=https://nomadproject.io/docs/
 Wants=network-online.target
 After=network-online.target
-BindsTo = systemd-netns@nomad.service
-JoinsNamespaceOf = systemd-netns@nomad.service
-After = systemd-netns@nomad.service
-# When using Nomad with Consul it is not necessary to start Consul first. These
-# lines start Consul before Nomad as an optimization to avoid Nomad logging
-# that Consul is unavailable at startup.
-#Wants=consul.service
-#After=consul.service
+BindsTo=systemd-netns@%i.service
+JoinsNamespaceOf=systemd-netns@%i.service
+After=systemd-netns@%i.service
 
 [Service]
 ExecReload=/bin/kill -HUP $MAINPID
-ExecStart=/usr/local/bin/nomad agent -config /etc/nomad.d
+ExecStart=/usr/local/bin/nomad agent -config /root/server2.hcl
+
 KillMode=process
 KillSignal=SIGINT
 LimitNOFILE=65536
@@ -22,7 +18,7 @@ LimitNPROC=infinity
 Restart=on-failure
 RestartSec=2
 StartLimitBurst=3
-StartLimitIntervalSec=10
+#StartLimitIntervalSec=10
 TasksMax=infinity
 OOMScoreAdjust=-1000
 

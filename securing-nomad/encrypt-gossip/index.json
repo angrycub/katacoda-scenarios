@@ -46,7 +46,12 @@
           "chmod": "+x"
         },
         {
-          "file": "ns-nomad",
+          "file": "ns-*",
+          "target": "/usr/local/bin",
+          "chmod": "+x"
+        },
+        {
+          "file": "br-*",
           "target": "/usr/local/bin",
           "chmod": "+x"
         },

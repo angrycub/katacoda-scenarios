@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+function start {
+  echo "Creating 192.168.0.10/24 and connecting to Nomad"
+  ip addr add 192.168.1.10/24 brd + dev br-nomad
+  echo "Done"
+}
+
+function stop {
+  echo "Deleting 192.168.0.10/24"
+  ip addr del 192.168.1.10/24 dev br-nomad
+  echo "Done"
+}
+
+case "$1" in
+   start)
+      start
+   ;;
+   stop)
+      stop
+   ;;
+   restart)
+      stop
+      start
+   ;;
+   *)
+      echo "Usage: $0 {start|stop|restart}"
+esac

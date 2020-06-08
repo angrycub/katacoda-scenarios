@@ -1,5 +1,6 @@
-data_dir  = "/opt/nomad/data"
+data_dir  = "/opt/nomad/server3/data"
 log_level = "DEBUG"
+bind_addr = "192.168.0.13"
 
 client {
   enabled = true
