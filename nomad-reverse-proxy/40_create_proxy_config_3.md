@@ -16,20 +16,21 @@ clicking the `fs-example` task, then clicking the logs tab.
 
 Logs will not load and eventually the following error will appear in the UI.
 
-[![Error in the UI. Cannot fetch logs. The logs for this task are inaccessible][./assets/img-cannot-fetch-logs]][./assets/img-cannot-fetch-logs]
+![Displayed error "Error in the UI. Cannot fetch logs. The logs for this task are inaccessible"](./assets/img-cannot-fetch-logs.png)
 
-There will also be this additional error in the browser developer tools console.
+There will also likely be an additional error in the browser developer tools
+console.
 
 ```plaintext
 GET http://internal-ip:4646/v1/client/fs/logs/131f60f7-ef46-9fc0-d80d-29e673f01bd6?follow=true&offset=50000&origin=end&task=ansi&type=stdout net::ERR_NAME_NOT_RESOLVED
 ```
 
-This `ERR_NAME_NOT_RESOLVED` error can be safely ignored. To prevent streaming
-logs through Nomad server nodes when unnecessary, the Web UI optimistically
-attempts to connect directly to the client node the task is running on. Since
-the Nomad configuration file used in this guide specifically advertises an
-address that can't be reached, the UI automatically falls back to requesting
-logs through the proxy.
+Errors from requests pointing to the Nomad client's internal addresses can be
+safely ignored. To prevent streaming logs through Nomad server nodes when
+unnecessary, the Web UI optimistically attempts to connect directly to the
+client node the task is running on. Since the Nomad configuration file used in
+this guide specifically advertises an address that can't be reached, the UI
+automatically falls back to requesting logs through the proxy.
 
 The NGINX configuration needs to be updated to disable proxy buffering, and
 allow log streaming.
@@ -52,4 +53,4 @@ docker restart nomad-proxy
 ```{{execute}}
 
 [sample job]: https://[[HOST_SUBDOMAIN]]-8000-[[KATACODA_HOST]].environments.katacoda.com/jobs/fs-example`
-[img-cannot-fetch-logs]: assets/img-cannot-fetch-logs.png
+[img-cannot-fetch-logs]: ./assets/img-cannot-fetch-logs.png

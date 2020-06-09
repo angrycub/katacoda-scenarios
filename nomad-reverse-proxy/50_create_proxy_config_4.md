@@ -22,7 +22,7 @@ results in exec sessions immediately terminating. You can experience this in the
 Web UI by navigating to the [sample job], clicking the Exec button, selecting the
 task, and attempting to run the command `/bin/sh`.
 
-[![Error in the UI when running /bin/sh. The connection has closed.][img-cannot-remote-exec]][img-cannot-remote-exec]
+![Error in the UI when running /bin/sh. The connection has closed.](./assets/img-cannot-remote-exec.png)
 
 The fulfill the handshake NGINX will need to forward the `Connection` and
 `Upgrade` headers. To meet the origin verification required by the Nomad API,
@@ -54,17 +54,19 @@ balance load across all Nomad server nodes, it is important to ensure that
 WebSocket connections get routed to a consistent host.
 
 This can be done by specifying an upstream in NGINX and using it as the proxy
-pass. Add the following after the server block in the existing NGINX
+pass. Add the following to the top of the http block in the existing NGINX
 configuration file.
 
-<pre class="file" data-filename="nginx.conf" data-target="append">
-# Since WebSockets are stateful connections but Nomad has multiple
-# server nodes, an upstream with ip_hash declared is required to ensure
-# that connections are always proxied to the same server node when possible.
-upstream nomad-ws {
-  ip_hash;
-  server [[HOST_IP]]:4646;
-}
+<pre class="file" data-filename="nginx.conf" data-target="insert" data-marker="http {">
+http {
+  # Since WebSockets are stateful connections but Nomad has multiple
+  # server nodes, an upstream with ip_hash declared is required to ensure
+  # that connections are always proxied to the same server node when possible.
+  upstream nomad-ws {
+    ip_hash;
+    server [[HOST_IP]]:4646;
+  }
+
 </pre>
 
 Traffic must also pass through the upstream. To configure this, change the `proxy_pass`
@@ -72,6 +74,7 @@ in the NGINX configuration file.
 
 <pre class="file" data-filename="nginx.conf" data-target="insert" data-marker="    location / {">
     location / {
+      # Use the stateful upstream to facilitate WebSocket connections.
       proxy_pass https://nomad-ws;
 </pre>
 
@@ -80,4 +83,3 @@ observable effect.
 
 [sample job]: https://[[HOST_SUBDOMAIN]]-8000-[[KATACODA_HOST]].environments.katacoda.com/jobs/fs-example
 [exec]: https://www.hashicorp.com/blog/hashicorp-nomad-remote-exec-web-ui
-[img-cannot-remote-exec]: ./assets/img-cannot-remote-exec.png
