@@ -18,7 +18,7 @@ install_apt_deps() {
   log "Installing OS dependencies"
   export DEBIAN_FRONTEND=noninteractive
   apt-get -y update >> /var/log/provision.log 2>&1
-  apt-get -y install sudo unzip daemon python3 python3-pip >> /var/log/provision.log 2>&1 
+  apt-get -y install sudo unzip python3 python3-pip >> /var/log/provision.log 2>&1 
   unset DEBIAN_FRONTEND
 }
 
@@ -45,7 +45,6 @@ create_nomad_service() {
   then
     cp /tmp/nomad.hcl /etc/nomad.d/nomad.hcl
   fi
-  cp /tmp/nomad.service /lib/systemd/system/
   systemctl enable nomad
 }
 
@@ -59,10 +58,18 @@ fix_journal
 install_apt_deps
 install_pyhcl
 
-install_zip "nomad" "https://releases.hashicorp.com/nomad/0.11.2/nomad_0.11.2_linux_amd64.zip"
+install_zip "consul" "https://releases.hashicorp.com/consul/1.7.4/consul_1.7.4_linux_amd64.zip"
+install_zip "nomad" "https://releases.hashicorp.com/nomad/0.11.3/nomad_0.11.3_linux_amd64.zip"
 
 mkdir -p /etc/nomad.d
 mkdir -p /opt/nomad/data
 
 create_nomad_service
+
+while [ ! -x /usr/local/bin/provision_ns.sh ]; do sleep 1; done; /usr/local/bin/provision_ns.sh
+
+if [ -x /usr/local/bin/provision_scenario.sh ]; 
+then
+  /usr/local/bin/provision_scenario.sh
+fi
 finish

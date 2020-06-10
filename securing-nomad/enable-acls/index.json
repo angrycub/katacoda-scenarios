@@ -1,8 +1,8 @@
 {
-  "title": "Enable Gossip Encryption for Nomad",
-  "description": "Learn how to encrypt Nomad's gossip protocol with a symmetric key.",
+  "title": "Enable Access Control in Nomad",
+  "description": "Nomad provides an access control system which allows you to customize access to your cluster by token.",
   "difficulty": "Beginner",
-  "time": "15 minutes",
+  "time": "30 minutes",
   "details": {
     "steps": [
       {
@@ -12,24 +12,28 @@
         "verify": "provision.verify.sh"
       },
       {
-        "title": "Examine gossip traffic",
-        "text": "step0.md"
-      },
-      {
-        "title": "Generate a key",
+        "title": "Create CA path",
         "text": "step1.md"
       },
       {
-        "title": "Add gossip key to configuration",
+        "title": "Initialize CA and build certs",
         "text": "step2.md"
       },
       {
-        "title": "Restart Nomad nodes",
+        "title": "Step 3",
         "text": "step3.md"
       },
       {
-        "title": "Verify gossip encryption",
+        "title": "Step 4",
         "text": "step4.md"
+      },
+      {
+        "title": "Step 5",
+        "text": "step5.md"
+      },
+      {
+        "title": "Step 6",
+        "text": "step6.md"
       }
     ],
     "intro": {

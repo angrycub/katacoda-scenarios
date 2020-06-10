@@ -28,3 +28,6 @@ dd if=/dev/urandom bs=16 count=1 status=none | base64
 $ dd if=/dev/urandom bs=16 count=1 status=none | base64
 LsuYyj93KVfT3pAJPMMCgA==
 ```
+
+This guide will use the token `cg8StVXbQJ0gPvMd9o7yrg==` for the remainder of
+the commands.

@@ -1,9 +1,24 @@
-You can verify encryption by performing the same tcpdump
-command that you used in the beginning of this scenario
+Restart your Nomad nodes to read the new configuration values.
+
+The scenario includes a helper script to restart the Nomad instances inside
+of their namespaces.  Run the following commands:
 
 ```
-tcpdump 'udp port 4648' -A
-```
+restart_server1
+```{{execute}}
 
-Observe that the traffic. Note that cleartext no longer
-appears in the output.
+```
+restart_server2
+```{{execute}}
+
+```
+restart_server3
+```{{execute}}
+
+Verify that the servers all start and are available:
+
+```
+nomad server members
+```{{execute}}
+
+All nodes should have "alive" as their status.

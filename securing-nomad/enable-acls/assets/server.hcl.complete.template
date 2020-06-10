@@ -1,0 +1,19 @@
+name      = "{{SERVER}}"
+data_dir  = "/opt/nomad/{{SERVER}}/data"
+log_file  = "/opt/nomad/{{SERVER}}/logs"
+log_level = "DEBUG"
+
+client {
+  enabled = true
+}
+
+plugin "raw_exec" {
+  config {
+    enabled = true
+  }
+}
+
+server {
+  enabled          = true
+  encrypt          = "cg8StVXbQJ0gPvMd9o7yrg=="
+}
