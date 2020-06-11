@@ -14,7 +14,7 @@ tcpdump 'udp port 4648' -A
 ```{{execute}}
 
 If you watch long enough, you will see traffic that shows cleartext
-elements of traffic like the member's node name.
+elements in the traffic like the member's node name.
 
 ```
 13:15:19.678930 IP 192.168.1.11.4648 > 192.168.1.10.4648: UDP, length 152
