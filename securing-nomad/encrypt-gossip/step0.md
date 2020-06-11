@@ -13,13 +13,8 @@ capture UDP traffic on the Serf port-4648.
 tcpdump 'udp port 4648' -A
 ```{{execute}}
 
-<<<<<<< HEAD
-If you watch long enough, you will see traffic that shows cleartext
-elements of traffic like the member's node name.
-=======
 If you watch long enough, you will see traffic that shows interesting
 elements in the traffic like the member's node name.
->>>>>>> 514815546332913f8ffb85ea4c0f95c5374b6b6a
 
 ```
 13:15:19.678930 IP 192.168.1.11.4648 > 192.168.1.10.4648: UDP, length 152
