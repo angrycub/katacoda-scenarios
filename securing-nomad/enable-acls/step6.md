@@ -1,4 +1,4 @@
-If you attempt to run a command at this point without a token provided, you will
+If you attempt to run a command at this point without providing a token, you will
 encounter an error; try it out.
 
 ```

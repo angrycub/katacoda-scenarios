@@ -24,8 +24,8 @@ in the ACL system.
   permissions are granted by default, making Nomad a default-deny system.
 
   - **Rules** - Policies are comprised of one or more rules. The rules define
-    the capabilities of a Nomad ACL token for accessing the objects in a Nomad
-    cluster, objects like namespaces, node, agent, operator, quota, etc. The
+    the capabilities of a Nomad ACL token for accessing objects in a Nomad
+    cluster—like namespaces, node, agent, operator, quota. The
     full set of rules are discussed in a later section.
 
 - **Capabilities** - Capabilities are the set of actions that can be performed.

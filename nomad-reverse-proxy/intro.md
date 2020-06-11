@@ -45,7 +45,7 @@ several benefits:
 
 To ensure every feature in the Nomad UI remains fully functional, you must
 properly configure your reverse proxy to meet Nomad's specific networking
-requirements. In this guide, you will configure NGINX as a TLS-uplifting reverse
+requirements. In this hands-on lab, you will configure NGINX as a TLS-uplifting reverse
 proxy.
 
 This guide will explore common configuration changes necessary when reverse

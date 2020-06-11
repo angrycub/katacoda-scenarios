@@ -1,5 +1,5 @@
 In order to verify the policy works properly, you will need to create tokens and
-check the success case and the failure cases. You will learn more about tokens
+check the success and failure cases. You will learn more about tokens
 later; for now, you can use the provided commands to generate appropriate tokens
 for your policies.
 

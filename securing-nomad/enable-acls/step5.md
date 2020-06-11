@@ -3,6 +3,11 @@ are granted. For clients making requests without ACL tokens, you may want to
 grant some basic level of access. This is done by setting rules on the special
 "anonymous" policy. This policy is applied to any requests made without a token.
 
+In this hands-on lab you will create allow-all policy specification. This is to
+illustrate how you could create a transitional anonymous policy. Apply this policy
+to restore the cluster to a default-allow state, which will minimize the
+time in which requests can not be submitted to the cluster without a token.
+
 Create a file named `anonymous_policy.hcl`{{open}} with this HCL content:
 
 <pre class="file" data-filename="anonymous_policy.hcl" data-target="replace">
@@ -36,6 +41,3 @@ plugin {
 }
 </pre>
 
-This is an allow-all policy specification. You can use this as a transitional
-anonymous policy, which will minimize time in which requests can not be
-submitted to the cluster once you bootstrap.

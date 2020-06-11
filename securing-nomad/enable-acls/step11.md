@@ -1,18 +1,20 @@
-Consider the requirements listed earlier for the production operations team
-persona, what rules should you add to your policy? Nomad will deny all requests
+## Production Operator persona
+
+Consider the requirements listed earlier for the production operators
+persona. What rules should you add to your policy? Nomad will deny all requests
 that are not explicitly supplied, so, again, focus on the policies you would
 like to permit.
 
-> The production operations team needs to be able to perform cluster
-maintenance and view the workload, including attached resources like
-volumes, in the running cluster. However, because the application
-developers are the owners of the running workload, the production
+> Production operators need to be able to perform cluster
+maintenance and view workloads, including attached resources like
+volumes, in the running cluster. However, because application
+developers are the owners of the running workloads, production
 operators should not be allowed to run or stop jobs in the cluster.
 
 Recall that [`namespace` rules] govern the job application deployment behaviors
 and introspection capabilities for a Nomad cluster.
 
-First define the policy in terms of required capabilities. What capabilities
+First, define the policy in terms of required capabilities. What capabilities
 from the available options will this policy need to provide to Production
 Operators?
 
@@ -22,7 +24,7 @@ Operators?
 | **list-jobs** - Allows listing the jobs and seeing coarse grain status. | ✅ |
 | **read-job** - Allows inspecting a job and seeing fine grain status. | ✅ |
 | **submit-job** - Allows jobs to be submitted or modified. | 🚫 |
-| **dispatch-job** - Allows jobs to be dispatched | 🚫 |
+| **dispatch-job** - Allows jobs to be dispatched. | 🚫 |
 | **read-logs** - Allows the logs associated with a job to be viewed. | 🚫 |
 | **read-fs** - Allows the filesystem of allocations associated to be viewed. | 🚫 |
 | **alloc-exec** - Allows an operator to connect and run commands in running allocations. | 🚫 |

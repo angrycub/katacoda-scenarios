@@ -1,10 +1,8 @@
-With the app-dev token still active, export your cluster address into a variable
-for convenience.
-
-Try to use the Nodes API to list out the Nomad clients in the cluster. Note that
-we have to provide all of the certificate information to the `curl` command so
-that it will make a mTLS connection.  Also, recall that we have the NOMAD_ADDR
-set to "https://127.0.0.1:4646" so that the CLI will work properly.
+With the app-dev token still active, try to use the Nodes API to list out the
+Nomad clients in the cluster. Note that we have to provide all of the certificate
+information to the `curl` command so that it will make a mTLS connection.  Also,
+recall that we have the NOMAD_ADDR set to "https://127.0.0.1:4646" so that the
+CLI will work properly.
 
 ```
 curl --cert ${NOMAD_CLIENT_CERT} \
