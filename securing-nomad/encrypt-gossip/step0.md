@@ -13,7 +13,7 @@ capture UDP traffic on the Serf port-4648.
 tcpdump 'udp port 4648' -A
 ```{{execute}}
 
-If you watch long enough, you will see traffic that shows cleartext
+If you watch long enough, you will see traffic that shows interesting
 elements in the traffic like the member's node name.
 
 ```
