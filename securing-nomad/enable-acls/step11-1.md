@@ -2,9 +2,9 @@
 
 Use the `nomad acl policy apply` command to upload your policy specifications.
 
-Because you unset NOMAD_ADDR earlier to test the anonymous policy, you will need
-to repopulate it from your bootstrap token file. ACLs policies and tokens can
-only be manipulated by a user presenting a management token.
+ACLs policies and tokens can only be manipulated by a user presenting a
+management token. Since you unset NOMAD_ADDR earlier to test the anonymous
+policy, you will need to repopulate it from your bootstrap token file.
 
 Switch back to the bootstrap token.
 
