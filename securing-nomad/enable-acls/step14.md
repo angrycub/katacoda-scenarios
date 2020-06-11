@@ -7,9 +7,9 @@ that it will make a mTLS connection.  Also, recall that we have the NOMAD_ADDR
 set to "https://127.0.0.1:4646" so that the CLI will work properly.
 
 ```
-curl --cert $NOMAD_CLIENT_CERT \
-  --key $NOMAD_CLIENT_KEY \
-  --cacert $NOMAD_CAPATH \
+curl --cert ${NOMAD_CLIENT_CERT} \
+  --key ${NOMAD_CLIENT_KEY} \
+  --cacert ${NOMAD_CAPATH} \
   --header "X-Nomad-Token: ${NOMAD_TOKEN}" \
   ${NOMAD_ADDR}/v1/nodes
 ```{{execute}}
@@ -17,9 +17,9 @@ curl --cert $NOMAD_CLIENT_CERT \
 **Sample Output**
 
 ```
-$ curl --cert $NOMAD_CLIENT_CERT \
-  --key $NOMAD_CLIENT_KEY \
-  --cacert $NOMAD_CAPATH \
+$ curl --cert ${NOMAD_CLIENT_CERT} \
+  --key ${NOMAD_CLIENT_KEY} \
+  --cacert ${NOMAD_CAPATH} \
   --header "X-Nomad-Token: ${NOMAD_TOKEN}" \
   ${NOMAD_ADDR}/v1/nodes
 Permission denied
@@ -35,9 +35,9 @@ Resubmit your Nodes API query. Expect to have a significant amount of JSON
 returned to your screen which indicates a successful API call.
 
 ```
-curl --cert $NOMAD_CLIENT_CERT \
-  --key $NOMAD_CLIENT_KEY \
-  --cacert $NOMAD_CAPATH \
+curl --cert ${NOMAD_CLIENT_CERT} \
+  --key ${NOMAD_CLIENT_KEY} \
+  --cacert ${NOMAD_CAPATH} \
   --header "X-Nomad-Token: ${NOMAD_TOKEN}" \
   ${NOMAD_ADDR}/v1/nodes
 ```{{execute}}
@@ -45,9 +45,9 @@ curl --cert $NOMAD_CLIENT_CERT \
 **Sample Output**
 
 ```
-$ curl --cert $NOMAD_CLIENT_CERT \
-  --key $NOMAD_CLIENT_KEY \
-  --cacert $NOMAD_CAPATH \
+$ curl --cert ${NOMAD_CLIENT_CERT} \
+  --key ${NOMAD_CLIENT_KEY} \
+  --cacert ${NOMAD_CAPATH} \
   --header "X-Nomad-Token: ${NOMAD_TOKEN}" \
   ${NOMAD_ADDR}/v1/nodes
 

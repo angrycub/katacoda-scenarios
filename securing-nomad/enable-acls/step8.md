@@ -23,4 +23,5 @@ You can read a more comprehensive treatment of this topic in the
 [Nomad ACL Policy Concepts] HashiCorp Learn Guide. Take some time to review that
 guide now.
 
+[HCL]: https://github.com/hashicorp/hcl/
 [Nomad ACL Policy Concepts]: https://learn.hashicorp.com/nomad/acls/policies
