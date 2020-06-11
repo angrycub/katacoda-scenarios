@@ -12,6 +12,9 @@ iptables -t nat -A POSTROUTING -s 192.168.1.0/24 -j MASQUERADE
 mkdir -p $dir/opt/nomad/server{1,2,3}/{data,logs}
 mkdir -p $dir/opt/nomad/client/{data,logs}
 
+for I in {1..3}; do ln -s /opt/nomad/server$I/nomad.hcl server$I.hcl; done
+ln -s /opt/nomad/client/nomad.hcl client.hcl
+
 echo "Creating network environments..."
 
 ## Servers
@@ -119,8 +122,6 @@ EOF
 
   chmod +x /usr/local/bin/*client*
   start_client
-
-done
 
 cat << EOF > /usr/local/bin/reset.sh
 killall nomad

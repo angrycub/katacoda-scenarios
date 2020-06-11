@@ -1,17 +1,6 @@
 name      = "{{NODE}}"
 data_dir  = "/opt/nomad/{{NODE}}/data"
-log_file  = "/opt/nomad/{{NODE}}/logs"
 log_level = "DEBUG"
-
-client {
-  enabled = true
-}
-
-plugin "raw_exec" {
-  config {
-    enabled = true
-  }
-}
 
 server {
   server_join {
@@ -19,4 +8,16 @@ server {
     retry_interval = "5s"
   }
   enabled = true
+}
+
+tls {
+  http = true
+  rpc  = true
+
+  ca_file   = "/etc/nomad.d/tls/nomad-agent-ca.pem"
+  cert_file = "/etc/nomad.d/tls/global-server-nomad-0.pem"
+  key_file  = "/etc/nomad.d/tls/global-server-nomad-0-key.pem"
+
+  verify_server_hostname = true
+  verify_https_client    = true
 }

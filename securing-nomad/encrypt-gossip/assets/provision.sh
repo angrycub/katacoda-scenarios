@@ -48,12 +48,27 @@ create_nomad_service() {
   systemctl enable nomad
 }
 
+maybe_preprovision() {
+  if [ -x /usr/local/bin/provision_scenario_pre.sh ]
+  then
+    /usr/local/bin/provision_scenario_pre.sh
+  fi
+}
+
+maybe_postprovision() {
+  if [ -x /usr/local/bin/provision_scenario_post.sh ]
+  then
+    /usr/local/bin/provision_scenario_post.sh
+  fi
+}
+
 finish() {
   touch /provision_complete
   log "Complete!  Move on to the next step."
 }
 
 # Main stuff
+
 fix_journal
 install_apt_deps
 install_pyhcl
@@ -64,12 +79,9 @@ install_zip "nomad" "https://releases.hashicorp.com/nomad/0.11.3/nomad_0.11.3_li
 mkdir -p /etc/nomad.d
 mkdir -p /opt/nomad/data
 
-create_nomad_service
+maybe_preprovision
 
 while [ ! -x /usr/local/bin/provision_ns.sh ]; do sleep 1; done; /usr/local/bin/provision_ns.sh
 
-if [ -x /usr/local/bin/provision_scenario.sh ]; 
-then
-  /usr/local/bin/provision_scenario.sh
-fi
+maybe_postprovision
 finish

@@ -65,7 +65,9 @@
     }
   },
   "environment": {
-    "uilayout": "editor-terminal"
+    "uilayout": "editor-terminal",
+    "hideHiddenFiles": true,
+    "exclusionPatterns": ["Desktop"]
   },
   "backend": {
     "imageid": "ubuntu"
