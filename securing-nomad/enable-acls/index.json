@@ -1,6 +1,6 @@
 {
   "title": "Enable Access Control in Nomad",
-  "description": "Nomad provides an access control system which allows you to customize access to your cluster by token.",
+  "description": "Nomad provides an access control system which allows you to customize access to your cluster using tokens, policies, rules, and capabilities.",
   "difficulty": "Beginner",
   "time": "30 minutes",
   "details": {
@@ -12,28 +12,84 @@
         "verify": "provision.verify.sh"
       },
       {
-        "title": "Create CA path",
+        "title": "Introduction to Nomad ACLs",
         "text": "step1.md"
       },
       {
-        "title": "Initialize CA and build certs",
+        "title": "Configure your nodes",
         "text": "step2.md"
       },
       {
-        "title": "Step 3",
+        "title": "Restart to enable ACLs",
         "text": "step3.md"
       },
       {
-        "title": "Step 4",
+        "title": "Bootstrapping the ACL system",
         "text": "step4.md"
       },
       {
-        "title": "Step 5",
+        "title": "Create the anonymous policy definition",
         "text": "step5.md"
       },
       {
-        "title": "Step 6",
+        "title": "Create anonymous policy",
         "text": "step6.md"
+      },
+      {
+        "title": "Test the anonymous policy",
+        "text": "step7.md"
+      },
+      {
+        "title": "Policy fundamentals",
+        "text": "step8.md"
+      },
+      {
+        "title": "Developing policies - Scenario",
+        "text": "step9.md"
+      },
+      {
+        "title": "Developing policies - Application Developer persona",
+        "text": "step10.md"
+      },
+      {
+        "title": "Developing policies - Production Operations persona",
+        "text": "step11.md"
+      },
+      {
+        "title": "Create test tokens",
+        "text": "step12.md"
+      },
+      {
+        "title": "Test job submission",
+        "text": "step13.md"
+      },
+      {
+        "title": "Test the `nodes` API",
+        "text": "step14.md"
+      },
+      {
+        "title": "Challenge: Restrict anonymous users",
+        "text": "step15.md"
+      },
+      {
+        "title": "Create test tokens",
+        "text": "step16.md"
+      },
+      {
+        "title": "Create test tokens",
+        "text": "step17.md"
+      },
+      {
+        "title": "Create test tokens",
+        "text": "step18.md"
+      },
+      {
+        "title": "Create test tokens",
+        "text": "step19.md"
+      },
+      {
+        "title": "Create test tokens",
+        "text": "step20.md"
       }
     ],
     "intro": {

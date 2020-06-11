@@ -20,19 +20,19 @@
         "text": "step2.md"
       },
       {
-        "title": "Step 3",
+        "title": "Deploy certificates",
         "text": "step3.md"
       },
       {
-        "title": "Step 4",
+        "title": "Configure server nodes",
         "text": "step4.md"
       },
       {
-        "title": "Step 5",
+        "title": "Configure client nodes",
         "text": "step5.md"
       },
       {
-        "title": "Step 6",
+        "title": "Restart nodes and test TLS",
         "text": "step6.md"
       }
     ],

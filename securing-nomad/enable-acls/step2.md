@@ -10,53 +10,49 @@ acl {
   enabled = true
 }
 ```
+## Configure server nodes
+Add the `acl` stanza to each of your server configurations.
 
-## Configure server1
+**server1**
 
-Switch to server1 namespace.
+Start by opening `server1.hcl`{{open}} in the editor. Add the acl stanza.
 
-```
-server1
-```{{execute}}
-
-Edit the nomad.hcl file with vim (or nano if you prefer).
-
-```
-vim nomad.hcl
-```{{execute}}
-
-Add the token. This guide will use a the token `cg8StVXbQJ0gPvMd9o7yrg==`
-
-If you are using nano, scroll to the endIf you are using vim, type the following commands into vim to navigate to the
-bottom of the file:
-
-`G`{{execute}},
-`i`{{execute}}.
-
-Add the acl stanza token
-
-```
+<pre class="file" data-filename="server1.hcl" data-target="append">
 acl {
   enabled = true
 }
-```{{execute}}
+</pre>
 
-Save and exit vim with the following command
+**server2**
 
-```
-:wq
-```{{execute interrupt}}
+Open `server2.hcl`{{open}} in the editor, and add the acl stanza.
 
-Exit the server1 namespace.
+<pre class="file" data-filename="server2.hcl" data-target="append">
+acl {
+  enabled = true
+}
+</pre>
 
-```
-exit
-```{{execute}}
+**server3**
 
-Repeat this process for the server2 and server3 namespaces.
+Open `server3.hcl`{{open}} in the editor, and add the acl stanza.
 
-You can run this command and the scenario will do it for you.
+<pre class="file" data-filename="server3.hcl" data-target="append">
+acl {
+  enabled = true
+}
+</pre>
 
-```
-finish_step2.sh
-```{{execute}}
+## Configure client nodes
+
+Nomad client nodes must also be configured with the ACL stanza.
+
+**client**
+
+Open `client.hcl`{{open}} in the editor, and add the acl stanza.
+
+<pre class="file" data-filename="client.hcl" data-target="append">
+acl {
+  enabled = true
+}
+</pre>

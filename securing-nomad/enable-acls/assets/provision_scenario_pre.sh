@@ -8,6 +8,7 @@ consul tls cert create -domain=nomad -dc=global -client > /dev/null
 mkdir -p /etc/nomad.d/tls
 cp nomad-agent-ca.pem /etc/nomad.d/tls
 cp global-server-nomad-0* /etc/nomad.d/tls
+cp global-client-nomad-0* /etc/nomad.d/tls
 
 cat > ~/tls_environment <<EOF
 echo "Preloading TLS Environment Variables..."
