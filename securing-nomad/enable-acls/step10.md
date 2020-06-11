@@ -1,20 +1,23 @@
-Considering the requirements listed earloer, what rules should you add to your
-policy? Nomad will deny all requests that are not explicitly permitted, so focus
-on the policies and capabilities you would like to permit. However, be mindful
-of the course-grained permissions in `namespace` rules—they might grant more
-permissions than you need for your use case.
+## Application Developer persona
 
-> The application developer needs to be able to deploy an application into the
-Nomad cluster and control its lifecycle. They should not be able to perform any
+Considering the requirements listed earlier. What rules should you add to your
+policy? Nomad will deny all requests that are not explicitly permitted, so focus
+on the policies and capabilities you would like to permit.
+
+However, be mindful of the course-grained permissions in `namespace` rules—they
+might grant more permissions than you need for your use case.
+
+> Application developers need to be able to deploy applications into the
+Nomad cluster and control their lifecycles. They should not be able to perform any
 other node operations.
 >
 > Application developers are allowed to fetch logs from their running containers,
 but should not be allowed to run commands inside of them or access the filesystem for running workloads.
 
-Recall that [`namespace` rules] govern the job application deployment behaviors
+Recall that [`namespace` rules] govern job application deployment behaviors
 and introspection capabilities for a Nomad cluster.
 
-First define the policy in terms of required capabilities. What capabilities
+First, define the policy in terms of required capabilities. What capabilities
 from the available options will this policy need to provide to Application
 Developers?
 
@@ -24,7 +27,7 @@ Developers?
 | **list-jobs** - Allows listing the jobs and seeing coarse grain status. | ✅ |
 | **read-job** - Allows inspecting a job and seeing fine grain status. | ✅ |
 | **submit-job** - Allows jobs to be submitted or modified. | ✅ |
-| **dispatch-job** - Allows jobs to be dispatched | ✅ |
+| **dispatch-job** - Allows jobs to be dispatched. | ✅ |
 | **read-logs** - Allows the logs associated with a job to be viewed. | ✅ |
 | **read-fs** - Allows the filesystem of allocations associated to be viewed. | 🚫 |
 | **alloc-exec** - Allows an operator to connect and run commands in running allocations. | 🚫 |
@@ -54,7 +57,7 @@ capabilities.
 | `list` | (grants listing plugin metadata only) |
 <!-- markdownlint-restore -->
 
-Express this in policy form. Create an file named `app-dev_policy.hcl`{{open}} to write
+Express this in policy form. Create a file named `app-dev_policy.hcl`{{open}} to write
 your policy.
 
 <pre class="file" data-filename="app-dev_policy.hcl" data-target="replace">
@@ -68,4 +71,4 @@ Note that the namespace rule has `policy = "read"`. The **write** policy is not
 suitable because it is overly permissive, granting "read-fs", "alloc-exec", and
 "alloc-lifecycle".
 
-[`namespace` rules]: /nomad/acls/policies#namespace-rules
+[`namespace` rules]: https://learn.hashicorp.com/nomad/acls/policies#namespace-rules

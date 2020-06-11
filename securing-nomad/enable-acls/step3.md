@@ -20,8 +20,8 @@ restart_client
 ```{{execute}}
 
 Once you restart the nodes, Nomad will become unavailable to users until
-the ACL subsystem is bootstrapped. At that point, users bearing valid tokens can
-connect to the cluster.
+the ACL subsystem is bootstrapped. After ACLs are bootstrapped, users bearing
+valid tokens can connect to the cluster.
 
 To allow users to submit work while you are rolling out tokens to your
 organization, you can configure an anonymous policy. The anonymous policy

@@ -10,7 +10,7 @@ prestart lifecycle hook. Tasks that hook prestart and are not `sidecar` tasks
 are expected to complete successfully before Nomad will run the main tasks in
 the job.
 
-In this guide, you will deploy two jobs with Nomad. In the job file for the
+In this hands-on lab, you will deploy two jobs with Nomad. In the job file for the
 dependent service, "mock-app", you will configure a task to monitor for the
 existence of the required service, "mock-service". You will test the dependency
 by deploying the dependent service first.

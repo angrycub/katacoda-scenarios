@@ -34,8 +34,8 @@ Modify Index = 7
 ```
 
 Once the initial bootstrap is performed, it cannot be performed again unless the
-bootstrap reset procedure is complete. Make sure to save this AccessorID and 
-SecretID.
+bootstrap reset procedure is complete. Make sure to save this Accessor ID and
+Secret ID.
 
 The bootstrap token is a `management` type token, meaning it can perform any
 operation. It should be used to setup the ACL policies and create additional ACL

@@ -27,6 +27,6 @@ $ nomad status
 No running jobs
 ```
 
-Once you have provide your users with tokens, you can update this anonymous
+Once you have provided your users with tokens, you can update this anonymous
 policy (don't forget the description) to be more restrictive or delete it
 completely to deny all requests from unauthenticated users.

@@ -1,6 +1,8 @@
 
+## Application Developer persona
+
 First, set the active token to your test app-dev token. You can extract it from
-the files that you created above.
+the files that you created earlier.
 
 ```
 export NOMAD_TOKEN=$(awk '/Secret/ {print $4}' app-dev.token)
@@ -68,6 +70,8 @@ Allocations
 ID        Node ID   Task Group  Version  Desired  Status   Created  Modified
 8b54bf75  afcb4e20  cache       0        run      running  26s ago  25s ago
 ```
+
+## Production Operator persona
 
 Switch to the prod-ops token.
 
