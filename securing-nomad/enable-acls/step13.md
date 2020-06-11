@@ -6,10 +6,10 @@ the files that you created above.
 export NOMAD_TOKEN=$(awk '/Secret/ {print $4}' app-dev.token)
 ```{{execute}}
 
-Create the sample job with `nomad init`.
+Create the short sample job with `nomad init`.
 
 ```
-nomad init
+nomad init -short
 ```{{execute}}
 
 Submit the sample job to your Nomad cluster.
@@ -73,7 +73,7 @@ Switch to the prod-ops token.
 
 ```
 export NOMAD_TOKEN=$(awk '/Secret/ {print $4}' prod-ops.token)
-```{{example}}
+```{{execute}}
 
 Try to stop the job; note that you are unable to do so.
 

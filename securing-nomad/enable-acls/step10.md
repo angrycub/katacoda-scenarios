@@ -67,3 +67,5 @@ namespace "default" {
 Note that the namespace rule has `policy = "read"`. The **write** policy is not
 suitable because it is overly permissive, granting "read-fs", "alloc-exec", and
 "alloc-lifecycle".
+
+[`namespace` rules]: /nomad/acls/policies#namespace-rules

@@ -56,6 +56,10 @@
         "text": "step11.md"
       },
       {
+        "title": "Create policies on the cluster",
+        "text": "step11-1.md"
+      },
+      {
         "title": "Create test tokens",
         "text": "step12.md"
       },
@@ -64,7 +68,7 @@
         "text": "step13.md"
       },
       {
-        "title": "Test the `nodes` API",
+        "title": "Test the nodes API",
         "text": "step14.md"
       },
       {

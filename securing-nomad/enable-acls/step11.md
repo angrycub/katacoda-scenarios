@@ -85,3 +85,5 @@ plugin {
 </pre>
 
 Add all of these policy elements to your `prod-ops_policy.hcl` file.
+
+[`namespace` rules]: /nomad/acls/policies#namespace-rules
