@@ -1,48 +1,38 @@
-Open your nomad configuration files.
+Add the token to the top of the server stanza to each of your server
+configurations.
 
-Switch to server1 namespace.
+**server1**
 
-```
-server1
-```{{execute}}
+Start by opening `server1.hcl`{{open}} in the editor.
 
-Edit the nomad.hcl file with vi (or nano if you prefer).
+Add the TLS stanza to the top of the server stanza.
 
-```
-vim nomad.hcl
-```{{execute}}
-
-Add the token. This guide will use a the token `cg8StVXbQJ0gPvMd9o7yrg==`
-
-Type the following commands into vim to add the token:
-
-`/server {`{{execute}},
-`j`{{execute}},
-`i`{{execute}}.
-
-Add the encryption token
-
-```
+<pre class="file" data-filename="server1.hcl" data-target="insert" data-marker="server {">
+server {
   # Encrypt gossip communication
   encrypt = "cg8StVXbQJ0gPvMd9o7yrg=="
-```{{execute}}
+</pre>
 
-Save and exit vim with the following command
+**server2**
 
-```
-:wq
-```{{execute interrupt}}
+Start by opening `server2.hcl`{{open}} in the editor.
 
-Exit the server1 namespace.
+Add the TLS stanza to the top of the server stanza.
 
-```
-exit
-```{{execute}}
+<pre class="file" data-filename="server2.hcl" data-target="insert" data-marker="server {">
+server {
+  # Encrypt gossip communication
+  encrypt = "cg8StVXbQJ0gPvMd9o7yrg=="
+</pre>
 
-Repeat this process for the server2 and server3 namespaces.
+**server3**
 
-You can run this command and the scenario will do it for you.
+Start by opening `server3.hcl`{{open}} in the editor.
 
-```
-finish_config.sh
-```{{execute}}
+Add the TLS stanza to the top of the server stanza.
+
+<pre class="file" data-filename="server3.hcl" data-target="insert" data-marker="server {">
+server {
+  # Encrypt gossip communication
+  encrypt = "cg8StVXbQJ0gPvMd9o7yrg=="
+</pre>
