@@ -20,8 +20,6 @@ host01  172.17.0.25:8301  alive   server  1.7.0  2         dc1  <all>
 
 ### Create a Consul agent policy
 
-Run `touch consul-agent-policy.hcl`{{execute}} to create a blank policy file.
-
 Open `consul-agent-policy.hcl`{{open}} in the editor and add this content.
 
 <pre class="file" data-filename="consul-agent-policy.hcl" data-target="replace">

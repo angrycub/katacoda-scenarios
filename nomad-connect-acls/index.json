@@ -9,42 +9,41 @@
       {
         "title": "Provisioning Extra Course Components",
         "text": "provision.md",
-        "courseData": "provision.courseData.sh",
         "code": "provision.code.sh",
         "verify": "provision.verify.sh"
       },
       {
         "title": "Enable and bootstrap Consul ACLs",
-        "text": "enable.md",
+        "text": "02-enable.md",
         "verify": "enable.md.verify.sh"
       },
       {
         "title": "Create a Consul agent policy and token",
-        "text": "consul_policy.md"
+        "text": "03-consul_policy.md"
       },
       {
         "title": "Install a Consul agent token",
-        "text": "consul_agent_token.md"
+        "text": "04-consul_agent_token.md"
       },
       {
         "title": "Create a Nomad server policy and token",
-        "text": "nomad_policy.md"
+        "text": "05-nomad_policy.md"
       },
       {
         "title": "Configure Nomad with Consul token",
-        "text": "nomad_config.md"
+        "text": "06-nomad_config.md"
       },
       {
         "title": "Run a service mesh enabled job",
-        "text": "run_connect_job.md"
+        "text": "07-run_connect_job.md"
       },
       {
         "title": "Configure Consul authentication to run jobs",
-        "text": "disallow_unauthenticated.md"
+        "text": "08-disallow_unauthenticated.md"
       },
       {
         "title": "Run a service mesh enabled job with a token",
-        "text": "run_connect_job_w_token.md"
+        "text": "09-run_connect_job_w_token.md"
       }
     ],
     "intro": {
@@ -52,11 +51,34 @@
     },
     "finish": {
       "text": "finish.md"
+    },
+    "assets": {
+      "host01": [
+        {
+          "file": "nomad.hcl",
+          "target": "/etc/nomad.d/"
+        },
+        {
+          "file": "consul.hcl",
+          "target": "/etc/consul.d/"
+        },
+        {
+          "file": "*.service",
+          "target": "/lib/systemd/system"
+        },
+        {
+          "file": "*.sh",
+          "target": "/usr/local/bin",
+          "chmod": "+x"
+        }
+      ]
     }
   },
   "files": [],
   "environment": {
     "uilayout": "editor-terminal",
+    "hideHiddenFiles": true,
+    "exclusionPatterns": ["Desktop"],
     "uimessage1": "\u001b[32mInteractive Bash Terminal.\u001b[m\r\n",
     "showdashboard": true,
     "dashboards": [

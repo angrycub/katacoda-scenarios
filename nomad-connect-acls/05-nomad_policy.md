@@ -2,11 +2,7 @@
 .lang-screenshot { -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
 </style>
 
-Run `touch nomad-server-policy.hcl`{{execute}}
-to create an empty Nomad agent policy file.
-
-Open `nomad-server-policy.hcl`{{open}} in the editor and
-add this content.
+Open `nomad-server-policy.hcl`{{open}} in the editor and add this content.
 
 <pre class="file" data-filename="nomad-server-policy.hcl" data-target="replace">
 agent_prefix "" {
@@ -36,7 +32,10 @@ consul acl policy create \
 **Example Output**
 
 ```screenshot
-$ consul acl policy create -name "nomad-server-token" -description "Nomad Server Token Policy" -rules @nomad-server-policy.hcl
+$ consul acl policy create \
+  -name "nomad-server-token" \
+  -description "Nomad Server Token Policy" \
+  -rules @nomad-server-policy.hcl
 ID:           aec3686a-e475-060e-5a39-263a5c0f298b
 Name:         nomad-server-token
 Description:  Nomad Server Token Policy
@@ -65,7 +64,9 @@ consul acl token create \
 **Example Output**
 
 ```screenshot
-$ consul acl token create -description "Nomad Demo Agent Token" -policy-name "nomad-server-token" | tee nomad-agent.token
+$ consul acl token create \
+  -description "Nomad Demo Agent Token" \
+  -policy-name "nomad-server-token" | tee nomad-agent.token
 AccessorID:       a073f54a-b51a-59ae-a014-6e95564885ea
 SecretID:         427d2bb2-9c43-5d54-39ce-d6115c5c10d9
 Description:      Nomad Demo Agent Token

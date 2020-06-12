@@ -3,9 +3,6 @@
   .alert { position: relative; padding: .75rem 1.25rem; margin-bottom: 1rem; border: 1px solid transparent; border-radius: .25rem; }
   .alert-info    { color: #0c5460; background-color: #d1ecf1; border-color: #bee5eb; }
 </style>
-
-Run `touch countdash.nomad`{{execute}} to create a blank job file.
-
 Open `countdash.nomad`{{open}} in the editor and copy-and-paste this job
 specification into the file.
 
@@ -73,9 +70,17 @@ specification into the file.
 
 ### Create the intention
 
-Consul service mesh starts in "default-deny" mode in datacenters that have ACLs enabled.
-You must create an intention to allow traffic from the count-dashboard
+Consul service mesh starts in default deny or accept based on the `default_policy`
+setting of the `acl` stanza. The configuration you added earlier sets default_policy
+to deny, so you must create an intention to allow traffic from the count-dashboard
 service to the count-api service.
+
+<div class="alert-info alert">
+It is good practice to create intentions that define what traffic is acceptable
+even in systems that are configured with `default_policy ="accept"`. If
+the default_policy is changed in the future, traffic without existing intentions
+will be interrupted; traffic with defined intentions will not.
+</div>
 
 Run `consul intention create count-dashboard count-api`{{execute}}
 
@@ -102,29 +107,3 @@ $ nomad run countdash.nomad
     Evaluation status changed: "pending" -> "complete"
 ==> Evaluation "3e7ebb57" finished with status "complete"
 ```
-
-Open the Countdash interface by clicking the "Countdash UI" tab above the
-terminal. The Countdash interface may appear "Disconnected" on initial load.
-Waiting a few seconds or refreshing your browser will update the status to
-"Connected".
-
-<div class="alert-info alert">
-If the Countdash UI displays "Counting Service is Unreachaable",you should
-go back and verify your configuration, and ensure that you have executed all
-the guide commands—specifically the **consul intention create...** command.
-</div>
-
-Once you are done, run `nomad stop countdash`{{execute}} to prepare for the next
-step.
-
-**Example Output**
-
-```screenshot
-$ nomad stop countdash
-==> Monitoring evaluation "d4796df1"
-    Evaluation triggered by job "countdash"
-    Evaluation within deployment: "18b25bb6"
-    Evaluation status changed: "pending" -> "complete"
-==> Evaluation "d4796df1" finished with status "complete"
-```
-
