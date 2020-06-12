@@ -1,3 +1,8 @@
+<style type="text/css">
+  .lang-screenshot { -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
+  .alert { position: relative; padding: .75rem 1.25rem; margin-bottom: 1rem; border: 1px solid transparent; border-radius: .25rem; }
+  .alert-info    { color: #0c5460; background-color: #d1ecf1; border-color: #bee5eb; }
+</style>
 Open the Countdash interface by clicking the "Countdash UI" tab above the
 terminal. The Countdash interface may appear "Disconnected" on initial load.
 Waiting a few seconds or refreshing your browser will update the status to

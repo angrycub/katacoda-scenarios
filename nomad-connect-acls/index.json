@@ -38,12 +38,16 @@
         "text": "07-run_connect_job.md"
       },
       {
+        "title": "Visit the CountDash UI",
+        "text": "08-visit_countdash_ui.md"
+      },
+      {
         "title": "Configure Consul authentication to run jobs",
-        "text": "08-disallow_unauthenticated.md"
+        "text": "09-disallow_unauthenticated.md"
       },
       {
         "title": "Run a service mesh enabled job with a token",
-        "text": "09-run_connect_job_w_token.md"
+        "text": "10-run_connect_job_w_token.md"
       }
     ],
     "intro": {
