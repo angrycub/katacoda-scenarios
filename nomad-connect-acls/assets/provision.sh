@@ -53,7 +53,7 @@ install_zip() {
 
 
 
-install_service() {
+install_services() {
 
   ln -s /etc/consul.d/consul.hcl ~/consul_config.hcl
   ln -s /etc/nomad.d/nomad.hcl ~/nomad_config.hcl
@@ -96,7 +96,6 @@ install_zip "consul" "https://releases.hashicorp.com/consul/1.7.2/consul_1.7.2_l
 mkdir -p /etc/nomad.d /etc/consul.d
 mkdir -p /opt/nomad/data /opt/consul/data
 
-create_nomad_service
-create_consul_service
+install_services
 
 finish

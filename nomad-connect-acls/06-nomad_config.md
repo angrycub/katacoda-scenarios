@@ -11,7 +11,7 @@ consul {
 }
 ```
 
-For this hands-on lab. you can automate this process by running this command,
+For this hands-on lab, you can automate this process by running this command,
 which will extract the secret from the token file that you created earlier,
 build a consul stanza using it, and then append it to the nomad_config.hcl file.
 

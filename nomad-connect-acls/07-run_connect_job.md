@@ -76,9 +76,9 @@ to deny, so you must create an intention to allow traffic from the count-dashboa
 service to the count-api service.
 
 <div class="alert-info alert">
-It is good practice to create intentions that define what traffic is acceptable
-even in systems that are configured with `default_policy ="accept"`. If
-the default_policy is changed in the future, traffic without existing intentions
+<strong>It's good practice to create intentions that define what traffic is acceptable
+even in systems that are configured with default_policy set to "accept".</strong>
+If the default_policy is changed in the future, traffic without existing intentions
 will be interrupted; traffic with defined intentions will not.
 </div>
 
