@@ -11,7 +11,7 @@ nomad acl token create -name="Test app-dev token" \
   -policy=app-dev -type=client | tee app-dev.token
 ```{{execute}}
 
-**Sample Output**
+**Example Output**
 
 ```
 $ nomad acl token create -name="Test app-dev token" \
@@ -35,7 +35,7 @@ nomad acl token create -name="Test prod-ops token" \
   -policy=prod-ops -type=client | tee prod-ops.token
 ```{{execute}}
 
-**Sample Output**
+**Example Output**
 
 ```
 $ nomad acl token create -name="Test prod-ops token" \

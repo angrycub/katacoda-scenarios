@@ -12,7 +12,7 @@ curl --cert ${NOMAD_CLIENT_CERT} \
   ${NOMAD_ADDR}/v1/nodes
 ```{{execute}}
 
-**Sample Output**
+**Example Output**
 
 ```
 $ curl --cert ${NOMAD_CLIENT_CERT} \
@@ -40,7 +40,7 @@ curl --cert ${NOMAD_CLIENT_CERT} \
   ${NOMAD_ADDR}/v1/nodes
 ```{{execute}}
 
-**Sample Output**
+**Example Output**
 
 ```
 $ curl --cert ${NOMAD_CLIENT_CERT} \

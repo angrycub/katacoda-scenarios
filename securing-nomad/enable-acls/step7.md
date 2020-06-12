@@ -20,7 +20,7 @@ Check the status.
 nomad status
 ```{{execute}}
 
-**Sample Output**
+**Example Output**
 
 ```screenshot
 $ nomad status

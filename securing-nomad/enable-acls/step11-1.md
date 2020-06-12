@@ -19,7 +19,7 @@ nomad acl policy apply \
   app-dev app-dev_policy.hcl
 ```{{execute}}
 
-**Sample Output**
+**Example Output**
 
 ```
 $ nomad acl policy apply \
@@ -36,7 +36,7 @@ nomad acl policy apply \
   prod-ops prod-ops_policy.hcl
 ```{{execute}}
 
-**Sample Output**
+**Example Output**
 
 ```
 $ nomad acl policy apply \

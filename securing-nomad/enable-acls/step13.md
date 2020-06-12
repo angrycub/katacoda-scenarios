@@ -20,7 +20,7 @@ Submit the sample job to your Nomad cluster.
 nomad job run example.nomad
 ```{{execute}}
 
-**Sample Output**
+**Example Output**
 
 ```
 $ nomad job run example.nomad
@@ -39,7 +39,7 @@ Verify that the job starts completely using the `nomad job status` command.
 nomad job status example
 ```{{execute}}
 
-**Sample Output**
+**Example Output**
 
 ```
 $ nomad job status example
@@ -85,7 +85,7 @@ Try to stop the job; note that you are unable to do so.
 nomad stop example
 ```{{execute}}
 
-**Sample Output**
+**Example Output**
 
 ```
 $ nomad stop example
@@ -104,7 +104,7 @@ Try again to stop the job; note that this time you are successful.
 nomad stop example
 ```{{execute}}
 
-**Sample Output**
+**Example Output**
 
 ```shell
 $ nomad stop example

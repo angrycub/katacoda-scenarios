@@ -18,7 +18,7 @@ second for the client to completely start and try again.
 </div>
 
 
-**Sample Output**
+**Example Output**
 
 ```
 $ nomad acl bootstrap | tee bootstrap.token
