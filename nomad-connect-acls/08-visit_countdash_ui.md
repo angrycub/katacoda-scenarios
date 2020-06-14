@@ -8,8 +8,12 @@ terminal. The Countdash interface may appear "Disconnected" on initial load.
 Waiting a few seconds or refreshing your browser will update the status to
 "Connected".
 
+You can also use this link to open the UI.
+
+https://[[HOST_SUBDOMAIN]]-9002-[[KATACODA_HOST]].environments.katacoda.com
+
 <div class="alert-info alert">
-If the Countdash UI displays "Counting Service is Unreachaable",you should
+If the Countdash UI displays "Counting Service is Unreachable",you should
 go back and verify your configuration, and ensure that you have executed all
 the guide commands—specifically the **consul intention create...** command.
 </div>
