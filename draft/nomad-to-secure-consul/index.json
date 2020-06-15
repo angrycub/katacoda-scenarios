@@ -53,7 +53,7 @@
           "target": "/tmp"
         },
         {
-          "file": "*.policy.hcl",
+          "file": "*.hcl",
           "target": "/tmp"
         },
         {
