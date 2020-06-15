@@ -4,6 +4,7 @@ ip netns exec server1 consul acl bootstrap > consul_bootstrap.token
 ip netns exec server1 nomad acl bootstrap > nomad_bootstrap.token
 
 ip netns exec server1 /usr/bin/env bash -c "
+  source /root/tls_environment
   export CONSUL_HTTP_TOKEN=\$(awk '/SecretID/ {print $2}' /root/consul_bootstrap.token)
   consul acl policy create -name \"consul_agent\" -description \"Consul Agent Token Policy\" -rules @/tmp/consul_agent.consul.policy.hcl
   consul acl policy create -name \"nomad_server\" -description \"Nomad Server Token Policy\" -rules @/tmp/nomad_server.consul.policy.hcl

@@ -55,7 +55,7 @@
         {
           "file": "*.policy.hcl",
           "target": "/tmp"
-        }
+        },
         {
           "file": "*.sh",
           "target": "/usr/local/bin",
