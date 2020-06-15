@@ -28,6 +28,10 @@ tls {
   verify_https_client    = true
 }
 
-acl {
-  enabled = true
+consul {
+  address = "https://127.0.0.1:8501"
+  ssl = true
+  ca_file = "/etc/consul.d/tls/consul-agent-ca.pem"
+  cert_file = "/etc/consul.d/tls/dc1-server-consul-0.pem"
+  key_file = "/etc/consul.d/tls/dc1-server-consul-0-key.pem"
 }

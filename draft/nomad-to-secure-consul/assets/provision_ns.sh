@@ -31,8 +31,9 @@ do
   ip link set br-veth$I master br1
   ip netns exec server$I ip route add default via 192.168.1.10
 
-  ## Nomad Stuff
-  sed "s/{{NODE}}/server$I/g" /tmp/server.hcl.template > /opt/nomad/server$I/nomad.hcl
+  ## Config Stuff
+  sed "s/{{NODE}}/server$I/g" /tmp/nomad.server.hcl.template > /opt/nomad/server$I/nomad.hcl
+  sed "s/{{NODE}}/server$I/g" /tmp/client.server.hcl.template > /opt/nomad/server$I/nomad.hcl
  
   cat << EOF > /usr/local/bin/server$I
 #!/usr/bin/env bash
@@ -43,27 +44,44 @@ EOF
   cat << EOF > /usr/local/bin/stop_server$I
 #!/usr/bin/env bash
 
-SERVER_PID=\$(ps aux | grep nomad | awk "/server$I/ {print \\\$2}")
+NOMAD_SERVER_PID=\$(ps aux | grep nomad | awk "/server$I/ {print \\\$2}")
+CONSUL_SERVER_PID=\$(ps aux | grep consul | awk "/server$I/ {print \\\$2}")
 
-if [ "\$SERVER_PID" != "" ]
+if [ "\$NOMAD_SERVER_PID" != "" ]
 then
   ip netns exec server$I kill \$SERVER_PID
-  echo "Stopped PID \$SERVER_PID"
+  echo "Stopped Nomad PID \$SERVER_PID"
 else
-  echo "No running PID found for Server $I"
+  echo "No running Nomad PID found for Server $I"
+fi
+
+if [ "\$CONSUL_SERVER_PID" != "" ]
+then
+  ip netns exec server$I kill \$SERVER_PID
+  echo "Stopped Consul PID \$SERVER_PID"
+else
+  echo "No running Consul PID found for Server $I"
 fi
 EOF
 
   cat << EOF > /usr/local/bin/start_server$I
 #!/usr/bin/env bash
 echo -n "Starting server $I..."
+ip netns exec server$I nohup consul agent -config-file=/opt/consul/server$I/consul.hcl >> /opt/consul/server$I/logs/consul.log 2>&1 </dev/null &
+
+if [ "\$?" ]
+then
+  echo "Started Consul Server $I"
+else
+  echo "Received non-zero exit code (\$?) on start of Consul Server $I."
+fi
 ip netns exec server$I nohup nomad agent -config=/opt/nomad/server$I/nomad.hcl >> /opt/nomad/server$I/logs/nomad.log 2>&1 </dev/null &
 
 if [ "\$?" ]
 then
-  echo "Started Server $I"
+  echo "Started Nomad Server $I"
 else
-  echo "Received non-zero exit code (\$?) on start of Server $I."
+  echo "Received non-zero exit code (\$?) on start of Nomad Server $I."
 fi
 EOF
 
@@ -90,26 +108,41 @@ done
   cat << EOF > /usr/local/bin/stop_client
 #!/usr/bin/env bash
 
-client_PID=\$(ps aux | grep nomad | awk "/client/ {print \\\$2}")
+NOMAD_CLIENT_PID=\$(ps aux | grep nomad | awk "/client/ {print \\\$2}")
+CONSUL_CLIENT_PID=\$(ps aux | grep consul | awk "/client/ {print \\\$2}")
 
-if [ "\$client_PID" != "" ]
+if [ "\$NOMAD_CLIENT_PID" != "" ]
 then
-  kill \$client_PID
-  echo "Stopped PID \$client_PID"
+  kill \$NOMAD_CLIENT_PID
+  echo "Stopped Nomad PID \$NOMAD_CLIENT_PID"
 else
-  echo "No running PID found for client."
+  echo "No running Nomad PID found for client."
+fi
+if [ "\$CONSUL_CLIENT_PID" != "" ]
+then
+  kill \$CONSUL_CLIENT_PID
+  echo "Stopped Consul PID \$CONSUL_CLIENT_PID"
+else
+  echo "No running Consul PID found for client."
 fi
 EOF
 
   cat << EOF > /usr/local/bin/start_client
 #!/usr/bin/env bash
 echo -n "Starting client..."
+nohup consul agent -config=/opt/consul/client/consul.hcl >> /opt/consul/client/logs/consul.log 2>&1 </dev/null &
+if [ "\$?" ]
+then
+  echo "Started client."
+else
+  echo "Received non-zero exit code (\$?) on start of consul client."
+fi
 nohup nomad agent -config=/opt/nomad/client/nomad.hcl >> /opt/nomad/client/logs/nomad.log 2>&1 </dev/null &
 if [ "\$?" ]
 then
   echo "Started client."
 else
-  echo "Received non-zero exit code (\$?) on start of client."
+  echo "Received non-zero exit code (\$?) on start of Nomadclient."
 fi
 EOF
 
