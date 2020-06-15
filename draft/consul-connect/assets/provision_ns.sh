@@ -9,8 +9,8 @@ ip link set br1 up
 ip addr add 192.168.1.10/24 brd + dev br1
 iptables -t nat -A POSTROUTING -s 192.168.1.0/24 -j MASQUERADE
 
-mkdir -p $dir/opt/nomad/server{1,2,3}/{data,logs}
-mkdir -p $dir/opt/nomad/client/{data,logs}
+mkdir -p $dir/opt/{nomad,consul}/server{1,2,3}/{data,logs}
+mkdir -p $dir/opt/{nomad,consul}/client/{data,logs}
 
 for I in {1..3}; do ln -s /opt/nomad/server$I/nomad.hcl server$I.hcl; done
 ln -s /opt/nomad/client/nomad.hcl client.hcl
@@ -32,7 +32,8 @@ do
   ip netns exec server$I ip route add default via 192.168.1.10
 
   ## Nomad Stuff
-  sed "s/{{NODE}}/server$I/g" /tmp/server.hcl.template > /opt/nomad/server$I/nomad.hcl
+  sed "s/{{NODE}}/server$I/g" /tmp/nomad.server.hcl.template > /opt/nomad/server$I/nomad.hcl
+  sed "s/{{NODE}}/server$I/g" /tmp/consul.server.hcl.template > /opt/consul/server$I/consul.hcl
  
   cat << EOF > /usr/local/bin/server$I
 #!/usr/bin/env bash
@@ -57,6 +58,7 @@ EOF
   cat << EOF > /usr/local/bin/start_server$I
 #!/usr/bin/env bash
 echo -n "Starting server $I..."
+ip netns exec server$I nohup consul agent -config=/opt/nomad/server$I/consul.hcl >> /opt/nomad/server$I/logs/consul.log 2>&1 </dev/null &
 ip netns exec server$I nohup nomad agent -config=/opt/nomad/server$I/nomad.hcl >> /opt/nomad/server$I/logs/nomad.log 2>&1 </dev/null &
 
 if [ "\$?" ]
@@ -104,6 +106,7 @@ EOF
   cat << EOF > /usr/local/bin/start_client
 #!/usr/bin/env bash
 echo -n "Starting client..."
+nohup consul agent -config-file=/opt/nomad/client/consul.hcl >> /opt/nomad/client/logs/consul.log 2>&1 </dev/null &
 nohup nomad agent -config=/opt/nomad/client/nomad.hcl >> /opt/nomad/client/logs/nomad.log 2>&1 </dev/null &
 if [ "\$?" ]
 then

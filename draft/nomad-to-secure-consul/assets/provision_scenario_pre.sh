@@ -20,18 +20,18 @@ cp global-client-nomad-0* /etc/nomad.d/tls
 
 cat > ~/tls_environment <<EOF
 echo "Preloading TLS Environment Variables..."
-export CONSUL_CAPATH="/etc/nomad.d/tls/nomad-agent-ca.pem"
-export CONSUL_CLIENT_CERT="/etc/nomad.d/tls/global-server-nomad-0.pem"
-export CONSUL_CLIENT_KEY="/etc/nomad.d/tls/glo
-export CONSUL_HTTP_ADDR="https://127.0.0.1:8300"
+export CONSUL_CAPATH="/etc/consul.d/tls/consul-agent-ca.pem"
+export CONSUL_CLIENT_CERT="/etc/consul.d/tls/dc1-server-consul-0.pem"
+export CONSUL_CLIENT_KEY="/etc/consul.d/tls/dc1-server-consul-0-key.pem"
+export CONSUL_HTTP_ADDR="https://127.0.0.1:8501"
 export NOMAD_CAPATH="/etc/nomad.d/tls/nomad-agent-ca.pem"
 export NOMAD_CLIENT_CERT="/etc/nomad.d/tls/global-server-nomad-0.pem"
 export NOMAD_CLIENT_KEY="/etc/nomad.d/tls/global-server-nomad-0-key.pem"
 export NOMAD_ADDR="https://127.0.0.1:4646"
 
 echo $ export CONSUL_CAPATH="/etc/nomad.d/tls/nomad-agent-ca.pem"
-echo $ export CONSUL_CLIENT_CERT="/etc/nomad.d/tls/global-server-nomad-0.pem"
-echo $ export CONSUL_CLIENT_KEY="/etc/nomad.d/tls/glo
+echo $ export CONSUL_CLIENT_CERT="/etc/consul.d/tls/dc1-server-consul-0.pem"
+echo $ export CONSUL_CLIENT_KEY="/etc/consul.d/tls/dc1-server-consul-0-key.pem"
 echo $ export CONSUL_HTTP_ADDR="https://127.0.0.1:8300"
 echo $ export NOMAD_CAPATH="/etc/nomad.d/tls/nomad-agent-ca.pem"
 echo $ export NOMAD_CLIENT_CERT="/etc/nomad.d/tls/global-server-nomad-0.pem"

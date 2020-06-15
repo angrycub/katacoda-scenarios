@@ -45,10 +45,27 @@
     },
     "finish": {
       "text": "finish.md"
+    },
+    "assets": {
+      "host01": [
+        {
+          "file": "*.template",
+          "target": "/tmp"
+        },
+        {
+          "file": "*.policy.hcl",
+          "target": "/tmp"
+        }
+        {
+          "file": "*.sh",
+          "target": "/usr/local/bin",
+          "chmod": "+x"
+        }
+      ]
     }
   },
   "environment": {
-    "uilayout": "editor-terminal-split",
+    "uilayout": "editor-terminal",
     "hideHiddenFiles": true,
     "exclusionPatterns": ["Desktop"]
   },
