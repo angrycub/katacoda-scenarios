@@ -6,35 +6,37 @@
   "details": {
     "steps": [
       {
-        "title": "Step 1",
-        "text": "step1.md"
+        "title": "Provisioning Extra Course Components",
+        "text": "provision.md",
+        "code": "provision.code.sh",
+        "verify": "provision.verify.sh"
       },
       {
-        "title": "Step 2",
+        "title": "Create a Nomad Server role",
         "text": "step2.md"
       },
       {
-        "title": "Step 3",
+        "title": "Create a Nomad Client role",
         "text": "step3.md"
       },
       {
-        "title": "Step 4",
+        "title": "Create an ACL token for Nomad servers",
         "text": "step4.md"
       },
       {
-        "title": "Step 5",
+        "title": "Create an ACL token for Nomad clients",
         "text": "step5.md"
       },
       {
-        "title": "Step 6",
+        "title": "Install Nomad server token",
         "text": "step6.md"
       },
       {
-        "title": "Step 7",
+        "title": "Install Nomad client token",
         "text": "step7.md"
       },
       {
-        "title": "Step 8",
+        "title": "Run test job that registers a Consul service",
         "text": "step8.md"
       }
     ],
@@ -46,9 +48,11 @@
     }
   },
   "environment": {
-    "uilayout": "editor-terminal-split"
+    "uilayout": "editor-terminal-split",
+    "hideHiddenFiles": true,
+    "exclusionPatterns": ["Desktop"]
   },
   "backend": {
-    "imageid": "ubuntu1804"
+    "imageid": "ubuntu"
   }
 }
