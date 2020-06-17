@@ -3,11 +3,12 @@ data_dir  = "/opt/nomad/{{NODE}}/data"
 log_level = "DEBUG"
 
 server {
+  enabled = true
+
   server_join {
-    retry_join = [ "192.168.1.11", "192.168.1.12", "192.168.1.13" ]
+    retry_join     = ["192.168.1.11", "192.168.1.12", "192.168.1.13"]
     retry_interval = "5s"
   }
-  enabled = true
 }
 
 tls {
@@ -24,11 +25,11 @@ tls {
 
 consul {
   #{{TOKEN}}
-  address = "127.0.0.1:8501"
-  ssl = true
-  ca_file = "/etc/consul.d/tls/consul-agent-ca.pem"
+  address   = "127.0.0.1:8501"
+  ssl       = true
+  ca_file   = "/etc/consul.d/tls/consul-agent-ca.pem"
   cert_file = "/etc/consul.d/tls/dc1-client-consul-0.pem"
-  key_file = "/etc/consul.d/tls/dc1-client-consul-0-key.pem"
+  key_file  = "/etc/consul.d/tls/dc1-client-consul-0-key.pem"
 }
 
 acl {

@@ -22,6 +22,14 @@ install_apt_deps() {
   unset DEBIAN_FRONTEND
 }
 
+install_cni() {
+  log "Installing CNI Plugins..."
+  curl -s -L -o cni-plugins.tgz https://github.com/containernetworking/plugins/releases/download/v0.8.4/cni-plugins-linux-amd64-v0.8.4.tgz
+  sudo mkdir -p /opt/cni/bin
+  sudo tar -C /opt/cni/bin -xzf cni-plugins.tgz
+  rm cni-plugins.tgz
+}
+
 install_zip() {
   NAME="$1"
   log "Fetching zip and installing ${NAME}"
@@ -72,6 +80,7 @@ finish() {
 fix_journal
 install_apt_deps
 install_pyhcl
+install_cni
 
 install_zip "consul" "https://releases.hashicorp.com/consul/1.7.4/consul_1.7.4_linux_amd64.zip"
 install_zip "nomad" "https://releases.hashicorp.com/nomad/0.11.3/nomad_0.11.3_linux_amd64.zip"
@@ -81,7 +90,7 @@ mkdir -p /opt/nomad/data
 
 maybe_preprovision
 
-while [ ! -x /usr/local/bin/provision_ns.sh ]; do sleep 1; done; /usr/local/bin/provision_ns.sh
+while [ ! -x /usr/local/bin/provision_namespaces.sh ]; do sleep 1; done; /usr/local/bin/provision_namespaces.sh
 
 maybe_postprovision
 finish

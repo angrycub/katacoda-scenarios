@@ -69,6 +69,12 @@ finish() {
 
 # Main stuff
 
+if [ -f /provision_complete ]
+then
+  echo "Provisioning already complete."
+  exit 0
+fi
+
 fix_journal
 install_apt_deps
 install_pyhcl

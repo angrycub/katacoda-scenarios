@@ -1,5 +1,5 @@
 agent_prefix "" {
-  policy = "read"
+  policy = "write"
 }
 
 node_prefix "" {
