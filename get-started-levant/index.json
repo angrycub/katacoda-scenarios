@@ -1,0 +1,62 @@
+{
+  "title": "Get Started with Levant Templating",
+  "description": "Learn the basics of templating with Levant: rendering, variables, iteration, subtemplates, includes",
+  "difficulty": "Beginner",
+  "time": "30 minutes",
+  "details": {
+    "steps": [
+      {
+        "title": "Install Levant",
+        "text": "step1.md",
+        "verify": "step1-verify.sh"
+      },
+      {
+        "title": "Create Your first template",
+        "text": "step2.md"
+      },
+      {
+        "title": "Use variables",
+        "text": "step3.md"
+      },
+      {
+        "title": "Provide values for variables",
+        "text": "step4.md"
+      },
+      {
+        "title": "Use a variable file",
+        "text": "step5.md"
+      },
+      {
+        "title": "Step 6",
+        "text": "step6.md"
+      },
+      {
+        "title": "Step 7",
+        "text": "step7.md"
+      }
+    ],
+    "intro": {
+      "text": "intro.md"
+    },
+    "finish": {
+      "text": "finish.md"
+    },
+    "assets": {
+      "host01": [
+        {
+          "file": "*.sh",
+          "target": "/usr/local/bin",
+          "chmod": "+x"
+        }
+      ]
+    }
+  },
+  "environment": {
+    "uilayout": "editor-terminal",
+    "hideHiddenFiles": true,
+    "exclusionPatterns": ["Desktop"]
+  },
+  "backend": {
+    "imageid": "golang:1.14"
+  }
+}
