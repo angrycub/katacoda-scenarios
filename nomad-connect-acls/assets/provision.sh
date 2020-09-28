@@ -90,8 +90,8 @@ install_dnsmasq
 install_cni
 install_pyhcl
 
-install_zip "nomad" "https://releases.hashicorp.com/nomad/0.11.0-beta1/nomad_0.11.0-beta1_linux_amd64.zip"
-install_zip "consul" "https://releases.hashicorp.com/consul/1.7.2/consul_1.7.2_linux_amd64.zip"
+install_zip "nomad" "https://releases.hashicorp.com/nomad/0.12.5/nomad_0.12.5_linux_amd64.zip"
+install_zip "consul" "https://releases.hashicorp.com/consul/1.8.4/consul_1.8.4_linux_amd64.zip"
 
 mkdir -p /etc/nomad.d /etc/consul.d
 mkdir -p /opt/nomad/data /opt/consul/data
