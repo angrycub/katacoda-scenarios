@@ -1,4 +1,5 @@
 {
+  "private": true,
   "title": "Nomad, Consul service mesh, and Consul ACLs.",
   "description": "Learn how to run Nomad jobs that leverage Consul service mesh for ACL-enabled Consul clusters.",
   "difficulty": "Intermediate",

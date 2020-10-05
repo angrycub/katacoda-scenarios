@@ -1,4 +1,5 @@
 {
+  "private": true,
   "title": "Get Started with Levant Templating",
   "description": "Learn the basics of templating with Levant: rendering, variables, iteration, subtemplates, includes",
   "difficulty": "Beginner",

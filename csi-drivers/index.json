@@ -1,4 +1,5 @@
 {
+  "private": true,
   "title": "Using CSI drivers in Nomad",
   "description": "Learn how to configure Nomad to use CSI plugins to configure storage for a workload.",
   "difficulty": "intermediate",

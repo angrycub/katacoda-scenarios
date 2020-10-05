@@ -1,4 +1,5 @@
 {
+  "private": true,
   "title": "Task Dependencies in Nomad.",
   "description": "Learn how declare task ordering in Nomad jobs.",
   "difficulty": "Intermediate",

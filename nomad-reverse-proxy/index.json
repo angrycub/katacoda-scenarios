@@ -1,4 +1,5 @@
 {
+  "private": true,
   "title": "Deploying Nomad UI with a Reverse Proxy",
   "description": "Learn how to configure and deploy a TLS-uplift reverse proxy for the Nomad UI.",
   "difficulty": "Intermediate",
