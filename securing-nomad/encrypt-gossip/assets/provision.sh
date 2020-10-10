@@ -62,32 +62,40 @@ maybe_postprovision() {
   fi
 }
 
+maybe_provision_namespace() {
+  if [ ! -f /provision/namespace_done ]
+  then
+    while [ ! -x /usr/local/bin/provision_ns.sh ]
+    do 
+      sleep 1
+    done
+    /usr/local/bin/provision_ns.sh
+    touch /provision/namespace_done
+  fi
+}
+
 finish() {
-  touch /provision_complete
   log "Complete!  Move on to the next step."
+  touch /provision_complete
+}
+
+maybe_provision_base() {
+  if [ ! -f /provision/provision_base_done ]
+  then
+    fix_journal
+    install_apt_deps
+    install_pyhcl
+    install_zip "consul" "https://releases.hashicorp.com/consul/1.8.4/consul_1.8.4_linux_amd64.zip"
+    install_zip "nomad" "https://releases.hashicorp.com/nomad/0.12.5/nomad_0.12.5_linux_amd64.zip"
+    touch /provision/provision_base_done
+  fi
 }
 
 # Main stuff
+mkdir -p /provision /etc/nomad.d /opt/nomad/data
 
-if [ -f /provision_complete ]
-then
-  echo "Provisioning already complete."
-  exit 0
-fi
-
-fix_journal
-install_apt_deps
-install_pyhcl
-
-install_zip "consul" "https://releases.hashicorp.com/consul/1.7.4/consul_1.7.4_linux_amd64.zip"
-install_zip "nomad" "https://releases.hashicorp.com/nomad/0.11.3/nomad_0.11.3_linux_amd64.zip"
-
-mkdir -p /etc/nomad.d
-mkdir -p /opt/nomad/data
-
+maybe_provision_base
 maybe_preprovision
-
-while [ ! -x /usr/local/bin/provision_ns.sh ]; do sleep 1; done; /usr/local/bin/provision_ns.sh
-
+maybe_provision_namespace
 maybe_postprovision
 finish
