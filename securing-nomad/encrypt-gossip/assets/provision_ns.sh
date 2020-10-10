@@ -3,6 +3,7 @@
 ## Borrowed with many thanks from Ciro S. Costa
 ## "Using network namespaces and a virtual switch to isolate servers"
 ## https://ops.tips/blog/using-network-namespaces-and-bridge-to-isolate-servers/
+sysctl -w net.ipv4.ip_forward=1
 
 ip link add name br1 type bridge
 ip link set br1 up
