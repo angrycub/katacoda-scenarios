@@ -35,5 +35,9 @@ mkdir ~/tls
 ```{{execute}}
 
 ```
+cp nomad-agent-ca.pem ~/tls
+```{{execute}}
+
+```
 cp global-cli-nomad-0* ~/tls
 ```{{execute}}
