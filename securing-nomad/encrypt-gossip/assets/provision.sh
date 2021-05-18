@@ -87,7 +87,7 @@ maybe_provision_base() {
     install_apt_deps
 #    install_pyhcl
     install_zip "consul" "https://releases.hashicorp.com/consul/1.9.5/consul_1.9.5_linux_amd64.zip"
-    install_zip "nomad" "https://releases.hashicorp.com/nomad/1.0.6/nomad_1.0.6_linux_amd64.zip"
+    install_zip "nomad" "https://releases.hashicorp.com/nomad/1.1.0/nomad_1.1.0_linux_amd64.zip"
     touch /provision/provision_base_done
   fi
 }

@@ -7,12 +7,14 @@ nomad operator keygen
 
 ```screenshot
 nomad operator keygen
-cg8StVXbQJ0gPvMd9o7yrg==
+BSq3lEdNa+DFQBam11mhJTue3UmO2F//Cqs5oCnp/3w=
 ```
 
-Current and older versions of `nomad operator keygen` return 16 bytes; however,
-Nomad supports gossip encryption keys of 32 bytes as well. Supplying a 32 byte
-key enables AES-256 mode, where supplying a 16 byte key enables AES-128 mode.
+**Note:** Older versions of `nomad operator keygen` might return 16 bytes, like 
+`cg8StVXbQJ0gPvMd9o7yrg==`.
+
+Supplying a 32 byte key enables AES-256 mode, where supplying a 16 byte key
+enables AES-128 mode.
 
 You can use any method that can create 32 random bytes encoded in base64.
 
