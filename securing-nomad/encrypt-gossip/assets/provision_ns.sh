@@ -19,13 +19,15 @@ mkdir -p $dir/opt/nomad/server{1..$NumServers}/{data,logs}
 mkdir -p $dir/etc/netns/server{1..$NumServers}
 mkdir -p $dir/opt/nomad/client/{data,logs}
 
-for I in {1..$NumServers}; do ln -s /opt/nomad/server$I/nomad.hcl server$I.hcl; done
+ServerIndexRange=$(eval echo {1..$NumServers})
+
+for I in $ServerIndexRange; do ln -s /opt/nomad/server$I/nomad.hcl server$I.hcl; done
 ln -s /opt/nomad/client/nomad.hcl client.hcl
 
 echo "Creating network environments..."
 
 ## Servers
-for I in {1..$NumServers}
+for I in $ServerIndexRange
 do
   echo " - server $I"
   ip netns add server$I
