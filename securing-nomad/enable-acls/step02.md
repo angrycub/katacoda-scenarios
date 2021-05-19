@@ -1,35 +1,37 @@
+<!-- markdownlint-disable first-line-h1 -->
+
 The ACL system is designed to be intuitive, high-performance, and to provide
 administrative insight. At the highest level, there are four core objects used
 in the ACL system.
 
 - Tokens
 - Policies
-    - Rules
+  - Rules
 - Capabilities
 
 ## Core objects overview
 
-- **Tokens** - Requests to Nomad are authenticated using a bearer token.
-  Each ACL token has a public Accessor ID which is used to name a token and a
-  Secret ID which is used to make requests to Nomad. The Secret ID is provided
-  using a request header (`X-Nomad-Token`) and is used to authenticate the
-  caller. Tokens are either `management` or `client` types. The `management`
-  tokens are effectively "root" in the system and can perform any operation.
-  The `client` tokens are associated with one or more ACL policies which grant
-  specific capabilities.
+- **Tokens** — Nomad authenticates requests based on a bearer token.
+  Each ACL token has a public accessor ID which names the token and a
+  Secret ID which is used to make requests to Nomad. Users provide the Secret ID
+  using the `X-Nomad-Token` request header. Nomad then authenticates the caller
+  based on the provided token. Tokens are either `management` or `client` types.
+  The `management` tokens are effectively “root” in the system and can perform
+  any operation. Client tokens have one or more ACL policies attached to them
+  that grant specific capabilities.
 
-- **Policies** - Policies consist of a set of rules defining the capabilities or
-  actions to be granted. For example, a "readonly" policy might only grant the
-  ability to list and inspect running jobs, but not to submit new ones. No
-  permissions are granted by default, making Nomad a default-deny system.
+- **Policies** — Policies consist of a set of rules defining the capabilities or
+  actions to be granted. For example, a “read-only” policy might only grant the
+  ability to list and inspect running jobs, but not to submit new ones. Nomad is
+  a default-deny system, so it grants no permissions by default.
 
-  - **Rules** - Policies are comprised of one or more rules. The rules define
+  - **Rules** — Policies contain of one or more rules. The rules define
     the capabilities of a Nomad ACL token for accessing objects in a Nomad
-    cluster—like namespaces, node, agent, operator, quota. The
-    full set of rules are discussed in a later section.
+    cluster—like namespaces, node, agent, operator, quota. A later section
+    discusses the full set of rules.
 
-- **Capabilities** - Capabilities are the set of actions that can be performed.
+- **Capabilities** — Capabilities are the set of actions that can be performed.
   This includes listing jobs, submitting jobs, querying nodes, etc. A
-  `management` token is granted all capabilities, while `client` tokens are
-  granted specific capabilities via ACL policies. The full set of capabilities
-  is discussed in the rule specifications.
+  `management` token has all capabilities, while a `client` tokens associated
+  ACL policies determine the specific capabilities granted it. The “Rule
+  specifications” section discusses full set of capabilities.

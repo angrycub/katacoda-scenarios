@@ -1,6 +1,6 @@
 In this hands-on lab, you will create Nomad ACL policies to provide controlled
 access for two different personas to your Nomad Cluster. You will use the sample
-job created with the `nomad init -short` command as a sample job. These personas
+job created with the `nomad job init -short` command as a sample job. These personas
 are contrived to suit the scenario. You should design your ACL policies around your
 organization's specific needs.
 

@@ -10,13 +10,13 @@ dispositions. Rules typically have several policy dispositions:
 - `write`: allow the resource to be read and modified
 
 - `deny`: do not allow the resource to be read or modified. Deny takes
-  precedence when multiple policies are associated with a token.
+  precedence when more than one policy is associated with a token.
 
 - `list`: allow the resource to be listed but not inspected in
   detail. Applies only to plugins.
 
-Some rules, such as namespace and host_volume, also allow the policy designer to
-specify a policy in terms of a coarse-grained policy disposition, fine-grained
+Some rules, such as `namespace` and `host_volume`, also allow the policy designer to
+specify a policy using a coarse-grained policy disposition, fine-grained
 capabilities, or a combination of the two.
 
 You can read a more comprehensive treatment of this topic in the

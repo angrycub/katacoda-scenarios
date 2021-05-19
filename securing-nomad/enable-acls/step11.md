@@ -1,10 +1,10 @@
-## Application Developer persona
+# Application developer persona
 
 Considering the requirements listed earlier. What rules should you add to your
 policy? Nomad will deny all requests that are not explicitly permitted, so focus
 on the policies and capabilities you would like to permit.
 
-However, be mindful of the course-grained permissions in `namespace` rules—they
+Be mindful of the course-grained permissions in `namespace` rules—they
 might grant more permissions than you need for your use case.
 
 > Application developers need to be able to deploy applications into the
@@ -12,7 +12,7 @@ Nomad cluster and control their lifecycles. They should not be able to perform a
 other node operations.
 >
 > Application developers are allowed to fetch logs from their running containers,
-but should not be allowed to run commands inside of them or access the filesystem for running workloads.
+but should not be allowed to run commands inside them or access the file system for running workloads.
 
 Recall that [`namespace` rules] govern job application deployment behaviors
 and introspection capabilities for a Nomad cluster.
@@ -20,7 +20,7 @@ and introspection capabilities for a Nomad cluster.
 First, define the policy in terms of required capabilities. What capabilities
 from the available options will this policy need to provide to Application
 Developers?
-
+<!-- markdownlint-disable no-inline-html -->
 <details><summary>View Answer</summary>
 
 <table>
@@ -28,7 +28,7 @@ Developers?
     <tr><th>Capability</th><th>Desired</th></tr>
   </thead>
   <tbody>
-    <tr><td><strong>deny</strong> - When multiple policies are associated with a token, deny will take precedence and prevent any capabilities. </td><td> N/A </td></tr>
+    <tr><td><strong>deny</strong> - When more than one policy is associated with a token, deny will take precedence and prevent any capabilities. </td><td> N/A </td></tr>
     <tr><td><strong>list-jobs</strong> - Allows listing the jobs and seeing coarse grain status. </td><td> ✅ </td></tr>
     <tr><td><strong>read-job</strong> - Allows inspecting a job and seeing fine grain status. </td><td> ✅ </td></tr>
     <tr><td><strong>submit-job</strong> - Allows jobs to be submitted or modified. </td><td> ✅ </td></tr>
@@ -54,7 +54,6 @@ Developers?
 Remember that the course-grained `policy` value of a namespace rule is a list of
 capabilities.
 
-<!-- markdownlint-disable no-inline-html -->
 <table>
   <thead>
     <tr><th> Policy value </th><th> Capabilities </th></tr>
@@ -74,6 +73,7 @@ capabilities.
 Express this in policy form. Create a file named `app-dev_policy.hcl`{{open}} to write
 your policy.
 
+<!-- markdownlint-disable no-inline-html -->
 <details><summary>View policy content</summary>
 
 <pre class="file" data-filename="app-dev_policy.hcl" data-target="replace">
@@ -83,10 +83,11 @@ namespace "default" {
 }
 </pre>
 
-Note that the namespace rule has `policy = "read"`. The **write** policy is not
-suitable because it is overly permissive, granting "read-fs", "alloc-exec", and
-"alloc-lifecycle".
+Note that the namespace rule has `policy = "read"`. The “write” policy is not
+suitable because it's overly permissive, granting “read-fs”, “alloc-exec”, and
+“alloc-lifecycle”.
 
 </details>
+<!-- markdownlint-restore -->
 
 [`namespace` rules]: https://learn.hashicorp.com/nomad/acls/policies#namespace-rules

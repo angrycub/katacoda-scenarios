@@ -1,3 +1,4 @@
+<!-- markdownlint-disable first-line-h1 -->
 If you attempt to run a command at this point without providing a token, you will
 encounter an error; try it out.
 
@@ -8,7 +9,7 @@ nomad status
 **Example Output**
 
 ```
-$ nomad status
+$ nomad job status
 Error querying jobs: Unexpected response code: 403 (Permission denied)
 ```
 
@@ -24,13 +25,13 @@ export NOMAD_TOKEN=$(awk '/Secret ID/ {print $4}' ~/bootstrap.token)
 Running the `nomad status` command will now complete successfully.
 
 ```
-nomad status
+nomad job status
 ```{{execute}}
 
 **Example Output**
 
 ```
-$ nomad status
+$ nomad job status
 No running jobs
 ```
 

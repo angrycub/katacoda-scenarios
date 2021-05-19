@@ -1,4 +1,4 @@
-At this point, it is good practice to verify that the anonymous policy is
+At this point, you should verify that the anonymous policy is
 performing as expected.
 
 You can unset your NOMAD_TOKEN environment variable to send unauthenticated
@@ -17,13 +17,13 @@ echo ${NOMAD_TOKEN}
 Check the status.
 
 ```
-nomad status
+nomad job status
 ```{{execute}}
 
 **Example Output**
 
 ```screenshot
-$ nomad status
+$ nomad job status
 No running jobs
 ```
 
