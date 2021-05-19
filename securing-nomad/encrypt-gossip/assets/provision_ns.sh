@@ -15,13 +15,16 @@ iptables -A FORWARD -o ens3 -i br1 -j ACCEPT
 iptables -A FORWARD -o br1 -i br1 -j ACCEPT
 iptables -t nat -A POSTROUTING -s 192.168.1.0/24 -j MASQUERADE
 
-mkdir -p $dir/opt/nomad/server{1..$NumServers}/{data,logs}
-mkdir -p $dir/etc/netns/server{1..$NumServers}
-mkdir -p $dir/opt/nomad/client/{data,logs}
 
 ServerIndexRange=$(eval echo {1..$NumServers})
+for I in $ServerIndexRange
+do
+  mkdir -p $dir/opt/nomad/server$I/{data,logs}
+  mkdir -p $dir/etc/netns/server$I
+  ln -s /opt/nomad/server$I/nomad.hcl server$I.hcl
+done
 
-for I in $ServerIndexRange; do ln -s /opt/nomad/server$I/nomad.hcl server$I.hcl; done
+mkdir -p $dir/opt/nomad/client/{data,logs}
 ln -s /opt/nomad/client/nomad.hcl client.hcl
 
 echo "Creating network environments..."
