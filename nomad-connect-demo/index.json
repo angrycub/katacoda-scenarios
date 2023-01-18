@@ -1,5 +1,5 @@
 {
-  "title": "Secure Nomad Jobs with Consul Service Mesh",
+  "title": "Configure Nomad for Connect",
   "description": "Learn how to run Nomad jobs that leverage Consul service mesh for ACL-enabled Consul clusters.",
   "difficulty": "Intermediate",
   "time": "20-40 minutes",
