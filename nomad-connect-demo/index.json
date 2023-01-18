@@ -1,0 +1,34 @@
+{
+  "title": "Secure Nomad Jobs with Consul Service Mesh",
+  "description": "Learn how to run Nomad jobs that leverage Consul service mesh for ACL-enabled Consul clusters.",
+  "difficulty": "Intermediate",
+  "time": "20-40 minutes",
+  "icon": "fa-nomad",
+  "details": {
+    "steps": [
+      {
+        "title": "Provisioning Extra Course Components",
+        "text": "provision.md",
+        "foreground": "provision.code.sh",
+        "verify": "provision.verify.sh"
+      },
+      {
+        "title": "Enable and bootstrap Consul ACLs",
+        "text": "02-enable.md",
+        "verify": "enable.md.verify.sh"
+      }
+    ],
+    "intro": {
+      "text": "intro.md"
+    },
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "ubuntu"
+  },
+  "interface": {
+    "layout": "ide"
+  }
+}
