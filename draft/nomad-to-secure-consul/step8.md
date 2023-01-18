@@ -1,1 +1,0 @@
-Run test job that registers a Consul service

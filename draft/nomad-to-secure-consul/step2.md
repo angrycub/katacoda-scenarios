@@ -1,1 +1,0 @@
-Create a Nomad Server role
