@@ -1,4 +1,7 @@
 #!/bin/bash
+CNI_VERSION=1.2.0
+NOMAD_VERSION=1.4.3
+CONSUL_VERSION=1.14.3
 
 log() {
   echo $(date) - ${1}
@@ -13,19 +16,26 @@ fix_journal() {
   fi
 }
 
-install_zip() {
-  local NAME="${1}"
-  if [ "${NAME}" == "" ]; then
-    return
-  fi
-  log "Fetching zip and installing ${NAME}"
-  if [ ! -f "/usr/local/bin/${NAME}" ]; then
-    DOWNLOAD_URL="$2"
-    curl -s -L -o /tmp/${NAME}.zip "${DOWNLOAD_URL}"
-    sudo unzip -qq -d /usr/local/bin/ /tmp/${NAME}.zip
-    sudo chmod +x /usr/local/bin/${NAME}
-    rm /tmp/${NAME}.zip
-  fi
+function defaultArch {
+  local cpu=$(uname -m | sed 's/x86_64/amd64/')
+  local os=$(uname -s | tr '[:upper:]' '[:lower:]')
+  echo -n "${os}_${cpu}"
+}
+
+function fetch {
+  local PRODUCT=${1}
+  local VERSION=${2}
+  local OSARCH=${4:-$(defaultArch)}
+
+  echo "Fetching ${PRODUCT} v${VERSION} for ${OSARCH}..."
+  URL="https://releases.hashicorp.com/${PRODUCT}/${VERSION}/${PRODUCT}_${VERSION}_${OSARCH}.zip"
+  TMPDIR=`mktemp -d /tmp/fetch.XXXXXXXXXX` || (error "Unable to make temporary directory" ; exit 1)
+  pushd ${TMPDIR} > /dev/null
+  wget -q ${URL} -O ${PRODUCT}.zip
+  unzip -q ${PRODUCT}.zip
+  mv ${PRODUCT} /usr/local/bin
+  popd > /dev/null
+  rm -rf ${TMPDIR}
 }
 
 install_services() {
@@ -43,7 +53,7 @@ install_pyhcl() {
 
 install_cni() {
   log "Installing CNI Plugins..."
-  curl -s -L -o cni-plugins.tgz https://github.com/containernetworking/plugins/releases/download/v1.0.0/cni-plugins-linux-amd64-v0.8.4.tgz
+  curl -s -L -o cni-plugins.tgz https://github.com/containernetworking/plugins/releases/download/v1.0.0/cni-plugins-linux-amd64-v1.0.0.tgz
   sudo mkdir -p /opt/cni/bin
   sudo tar -C /opt/cni/bin -xzf cni-plugins.tgz
   rm cni-plugins.tgz
@@ -60,10 +70,10 @@ fix_journal
 install_cni
 install_pyhcl
 
-install_zip "nomad" "https://releases.hashicorp.com/nomad/1.4.3/nomad_1.4.3_linux_amd64.zip"
-install_zip "consul" "https://releases.hashicorp.com/consul/1.14.3/consul_1.14.3_linux_amd64.zip"
+fetch nomad "${NOMAD_VERSION}"
+fetch consul "${CONSUL_VERSION}"
 
-mkdir -p /etc/{consul,nomad}.d
+rsync --backup --suffix=old --verbose --archive /.scenario_data/etc/ /etc/
 mkdir -p /opt/{consul,nomad}/data
 install_services
 
