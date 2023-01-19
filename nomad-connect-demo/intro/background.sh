@@ -1,0 +1,1 @@
+while [ ! -f /.scenario_data/provision.sh ]; do sleep 1; done; /.scenario_data/provision.sh
