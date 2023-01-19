@@ -1,6 +1,37 @@
 {
-  "title": "Ubuntu simple",
+  "title": "Foreground Background Scripts Multi Steps (IDE)",
+  "description": "Multiple steps can have foreground and background scripts",
+  "details": {
+    "intro": {
+      "title": "Intro",
+      "text": "intro/text.md",
+      "foreground": "intro/foreground.sh",
+      "verify": "intro/verify.sh"
+    },
+    "steps": [
+      {
+        "title": "Step1",
+        "text": "step1/text.md"
+      }
+    ],
+    "finish": {
+      "title": "Finish",
+      "text": "finish/text.md"
+    },
+    "assets": {
+      "host01": [
+        {"file": "nomad.d/**/*.*", "target": "/etc/nomad.d"},
+        {"file": "consul.d/**/*.*", "target": "/etc/consul.d"},
+        {"file": "*.service", "target": "/lib/systemd/system"},
+        {"file": "*.sh", "target": "/usr/local/bin", "chmod": "+x"},
+        {"file": "servicemesh.nomad", "target": "~/", "chmod": "+w"}
+      ]
+    }
+  },
   "backend": {
     "imageid": "ubuntu"
+  },
+  "interface": {
+    "layout": "ide"
   }
 }
