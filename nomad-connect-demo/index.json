@@ -1,0 +1,45 @@
+{
+  "title": "Nomad Connect Demo",
+  "description": "Thu Jan 19 16:32:04 EST 2023",
+  "details": {
+    "intro": {
+      "title": "Intro",
+      "text": "intro/text.md",
+      "background": "intro/background.sh"
+    },
+    "steps": [
+      {
+        "title": "Step1",
+        "text": "step1/text.md"
+      }
+    ],
+    "finish": {
+      "title": "Finish",
+      "text": "finish/text.md"
+    },
+    "assets": {
+      "host01": [
+        {
+          "file": "servicemesh.nomad",
+          "target": "~/",
+          "chmod": "+w"
+        },
+        {
+          "file": "**/*.*",
+          "target": "/.scenario_data"
+        },
+        {
+          "file": "provision.sh",
+          "target": "/.scenario_data/bin",
+          "chmod": "+x"
+        }
+      ]
+    }
+  },
+  "backend": {
+    "imageid": "ubuntu"
+  },
+  "interface": {
+    "layout": "ide"
+  }
+}
