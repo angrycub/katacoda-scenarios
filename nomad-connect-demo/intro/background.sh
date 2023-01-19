@@ -11,11 +11,12 @@ fail() {
 maybeLog() {
   if [ $loops -gt 60 ]; then
     fail "Timed out waiting for /.scenario_data/bin/provision.sh"
-  if [ ((loops % 10)) -eq 0 ]; then
+  fi
+  if [ $((loops % 10)) -eq 0 ]; then
     log "Waiting for /.scenario_data/bin/provision.sh"
   fi
-
 }
+
 log "background.sh started"
 loops=0
 while [ ! -x /.scenario_data/bin/provision.sh ]; do

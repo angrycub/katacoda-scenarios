@@ -27,7 +27,7 @@ function fetch {
   local VERSION=${2}
   local OSARCH=${4:-$(defaultArch)}
 
-  echo "Fetching ${PRODUCT} v${VERSION} for ${OSARCH}..."
+  echo "Fetching ${PRODUCT} v${VERSION} for ${OSARCH}"
   URL="https://releases.hashicorp.com/${PRODUCT}/${VERSION}/${PRODUCT}_${VERSION}_${OSARCH}.zip"
   TMPDIR=`mktemp -d /tmp/fetch.XXXXXXXXXX` || (error "Unable to make temporary directory" ; exit 1)
   pushd ${TMPDIR} > /dev/null
@@ -46,14 +46,9 @@ install_services() {
   systemctl start nomad
 }
 
-install_pyhcl() {
-  log "Installing pyhcl..."
-  pip install -qqq pyhcl
-}
-
 install_cni() {
   log "Installing CNI Plugins..."
-  curl -s -L -o cni-plugins.tgz https://github.com/containernetworking/plugins/releases/download/v1.0.0/cni-plugins-linux-amd64-v1.0.0.tgz
+  curl -s -L -o cni-plugins.tgz "https://github.com/containernetworking/plugins/releases/download/v${CNI_VERSION}/cni-plugins-linux-amd64-v${CNI_VERSION}.tgz"
   sudo mkdir -p /opt/cni/bin
   sudo tar -C /opt/cni/bin -xzf cni-plugins.tgz
   rm cni-plugins.tgz
@@ -68,12 +63,11 @@ finish() {
 
 fix_journal
 install_cni
-install_pyhcl
 
 fetch nomad "${NOMAD_VERSION}"
 fetch consul "${CONSUL_VERSION}"
 
-rsync --backup --suffix=old --verbose --archive /.scenario_data/etc/ /etc/
+rsync --quiet --backup --suffix=old --verbose --archive /.scenario_data/etc/ /etc/
 mkdir -p /opt/{consul,nomad}/data
 install_services
 
