@@ -5,13 +5,12 @@
     "intro": {
       "title": "Intro",
       "text": "intro/text.md",
-      "background": "intro/foreground.sh"
+      "background": "intro/background.sh"
     },
     "steps": [
       {
         "title": "Step1",
-        "text": "step1/text.md",
-        "verify": "step1/verify.sh"
+        "text": "step1/text.md"
       }
     ],
     "finish": {
