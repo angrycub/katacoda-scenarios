@@ -27,7 +27,7 @@ function fetch {
   local VERSION=${2}
   local OSARCH=${4:-$(defaultArch)}
 
-  echo "Fetching ${PRODUCT} v${VERSION} for ${OSARCH}"
+  log "Fetching ${PRODUCT} v${VERSION} for ${OSARCH}"
   URL="https://releases.hashicorp.com/${PRODUCT}/${VERSION}/${PRODUCT}_${VERSION}_${OSARCH}.zip"
   TMPDIR=`mktemp -d /tmp/fetch.XXXXXXXXXX` || (error "Unable to make temporary directory" ; exit 1)
   pushd ${TMPDIR} > /dev/null
@@ -60,13 +60,13 @@ finish() {
 }
 
 # Main stuff
+chmod +x /.scenario_data/bin
+cp /.scenario_data/bin /usr/local/bin
 
 fix_journal
 install_cni
-
 fetch nomad "${NOMAD_VERSION}"
 fetch consul "${CONSUL_VERSION}"
-
 rsync --quiet --backup --suffix=old --verbose --archive /.scenario_data/etc/ /etc/
 mkdir -p /opt/{consul,nomad}/data
 install_services

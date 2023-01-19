@@ -1,6 +1,6 @@
 {
   "title": "Nomad Connect Demo",
-  "description": "Thu Jan 19 16:32:04 EST 2023",
+  "description": "Thu Jan 19 18:00:55 EST 2023",
   "details": {
     "intro": {
       "title": "Intro",
@@ -10,7 +10,8 @@
     "steps": [
       {
         "title": "Step1",
-        "text": "step1/text.md"
+        "text": "step1/text.md",
+        "foreground": "step1/foreground.sh"
       }
     ],
     "finish": {
@@ -29,7 +30,7 @@
           "target": "/.scenario_data"
         },
         {
-          "file": "provision.sh",
+          "file": "*.sh",
           "target": "/.scenario_data/bin",
           "chmod": "+x"
         }
