@@ -1,7 +1,7 @@
 #!/bin/bash
-CNI_VERSION=1.2.0
-NOMAD_VERSION=1.4.3
-CONSUL_VERSION=1.14.3
+CNI_VERSION="1.2.0"
+NOMAD_VERSION="1.4.3"
+CONSUL_VERSION="1.14.3"
 
 log() {
   echo $(date) - ${1}
@@ -48,7 +48,7 @@ install_services() {
 
 install_cni() {
   log "Installing CNI Plugins..."
-  curl -s -L -o cni-plugins.tgz "https://github.com/containernetworking/plugins/releases/download/v${CNI_VERSION}/cni-plugins-linux-amd64-v${CNI_VERSION}.tgz"
+  curl -s -L -o cni-plugins.tgz https://github.com/containernetworking/plugins/releases/download/v${CNI_VERSION}/cni-plugins-linux-amd64-v${CNI_VERSION}.tgz
   sudo mkdir -p /opt/cni/bin
   sudo tar -C /opt/cni/bin -xzf cni-plugins.tgz
   rm cni-plugins.tgz
