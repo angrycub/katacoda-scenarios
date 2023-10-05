@@ -1,0 +1,41 @@
+{
+  "title": "Nomad Pack - Get Started",
+  "description": "Thu Jan 19 18:12:16 EST 2023",
+  "details": {
+    "intro": {
+      "title": "Intro",
+      "text": "intro/text.md",
+      "background": "intro/background.sh"
+    },
+    "steps": [
+      {
+        "title": "Step1",
+        "text": "step1/text.md",
+        "foreground": "step1/foreground.sh"
+      }
+    ],
+    "finish": {
+      "title": "Finish",
+      "text": "finish/text.md"
+    },
+    "assets": {
+      "host01": [
+        {
+          "file": "**/*.*",
+          "target": "/.scenario_data"
+        },
+        {
+          "file": "*.sh",
+          "target": "/.scenario_data/bin",
+          "chmod": "+x"
+        }
+      ]
+    }
+  },
+  "backend": {
+    "imageid": "ubuntu"
+  },
+  "interface": {
+    "layout": "ide"
+  }
+}
