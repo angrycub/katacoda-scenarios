@@ -6,4 +6,4 @@ This wget command will fetch the current nightly release.
 
 ```bash
 wget -o nomad-pack.zip https://github.com/hashicorp/nomad-pack/releases/download/nightly/nomad-pack_0.0.1-techpreview.4_linux_amd64.zip
-```
+```{{execute}}
